@@ -12,9 +12,9 @@ import {
 import { Aircraft } from '../../aircraft/entities/aircraft.entity';
 import { IsNotEmpty } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { Awb } from '../../awb/entities/awb.entity';
-import { TimeTable } from '../../time-table/entities/time-table.entity';
-import { Uld } from '../../uld/entities/uld.entity';
+import { Awb } from '../../../cargo/awb/entities/awb.entity';
+import { TimeTable } from '../../../time-table/entities/time-table.entity';
+import { Uld } from '../../../facility/uld/uld/entities/uld.entity';
 
 @Entity()
 export class AircraftSchedule {

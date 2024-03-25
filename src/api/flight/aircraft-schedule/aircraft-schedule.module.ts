@@ -3,7 +3,7 @@ import { AircraftScheduleService } from './aircraft-schedule.service';
 import { AircraftScheduleController } from './aircraft-schedule.controller';
 import { AircraftSchedule } from './entities/aircraft-schedule.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MqttModule } from '../mqtt.module';
+import { MqttModule } from '../../../mqtt.module';
 
 @Module({
   imports: [

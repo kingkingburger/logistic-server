@@ -5,7 +5,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { AircraftSchedule } from './entities/aircraft-schedule.entity';
 import {
   Between,
-  DataSource,
   Equal,
   FindOperator,
   ILike,
@@ -14,17 +13,14 @@ import {
   Repository,
 } from 'typeorm';
 import { AircraftAttribute } from '../aircraft/entities/aircraft.entity';
-import { orderByUtil } from '../lib/util/orderBy.util';
-import { Awb, AwbSimpleAttribute } from '../awb/entities/awb.entity';
 import { ClientProxy } from '@nestjs/microservices';
-import { Uld, UldAttribute } from '../uld/entities/uld.entity';
-import {
-  UldType,
-  UldTypeAttribute,
-} from '../uld-type/entities/uld-type.entity';
-import { UldHistoryAttribute } from '../uld-history/entities/uld-history.entity';
-import { SccAttribute } from '../scc/entities/scc.entity';
-import { adjustDate } from '../lib/util/adjustDate';
+import { orderByUtil } from '../../../lib/util/orderBy.util';
+import { AwbSimpleAttribute } from '../../cargo/awb/entities/awb.entity';
+import { UldAttribute } from '../../facility/uld/uld/entities/uld.entity';
+import { UldTypeAttribute } from '../../facility/uld/uld-type/entities/uld-type.entity';
+import { UldHistoryAttribute } from '../../facility/uld/uld-history/entities/uld-history.entity';
+import { SccAttribute } from '../../cargo/scc/entities/scc.entity';
+import { adjustDate } from '../../../lib/util/adjustDate';
 
 @Injectable()
 export class AircraftScheduleService {

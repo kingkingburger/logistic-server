@@ -12,8 +12,8 @@ import { AircraftService } from './aircraft.service';
 import { CreateAircraftDto } from './dto/create-aircraft.dto';
 import { UpdateAircraftDto } from './dto/update-aircraft.dto';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { Aircraft } from './entities/aircraft.entity';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 
 @Controller('aircraft')
 @ApiTags('[항공기]aircraft')
