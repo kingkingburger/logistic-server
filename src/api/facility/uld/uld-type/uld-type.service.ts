@@ -11,7 +11,7 @@ import {
   Repository,
 } from 'typeorm';
 import { UldType } from './entities/uld-type.entity';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { orderByUtil } from '../lib/util/orderBy.util';
 
 @Injectable()

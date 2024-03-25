@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { VmsAwbResultService } from './vms-awb-result.service';
 import { ApiQuery } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { VmsAwbResult } from './entities/vms-awb-result.entity';
 import { CreateVmsAwbResultDto } from './dto/create-vms-awb-result.dto';
 

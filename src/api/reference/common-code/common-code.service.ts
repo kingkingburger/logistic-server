@@ -11,7 +11,7 @@ import {
   MoreThanOrEqual,
   Repository,
 } from 'typeorm';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { orderByUtil } from '../lib/util/orderBy.util';
 
 @Injectable()

@@ -19,9 +19,9 @@ import {
   ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
-import { Asrs } from '../asrs/entities/asrs.entity';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { SkidPlatform } from './entities/skid-platform.entity';
+import { Asrs } from '../../asrs/asrs/entities/asrs.entity';
 
 @Controller('skid-platform')
 @ApiTags('[안착대]skid-platform')

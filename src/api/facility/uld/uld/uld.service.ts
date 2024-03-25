@@ -12,7 +12,7 @@ import {
   Repository,
 } from 'typeorm';
 import { Uld } from './entities/uld.entity';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import {
   UldType,
   UldTypeAttribute,

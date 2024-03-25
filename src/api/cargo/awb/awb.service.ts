@@ -31,7 +31,7 @@ import { MqttService } from '../../../mqtt.service';
 import { AwbUtilService } from './awbUtil.service';
 import { SkidPlatformHistoryService } from '../../facility/skidPlat/skid-platform-history/skid-platform-history.service';
 import { InjectionSccDto } from './dto/injection-scc.dto';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { orderByUtil } from '../../../lib/util/orderBy.util';
 import { winstonLogger } from '../../../lib/logger/winston.util';
 import { breakDownRequest } from '../../../lib/util/axios.util';

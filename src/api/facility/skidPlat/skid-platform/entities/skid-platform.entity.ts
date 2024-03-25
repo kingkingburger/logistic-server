@@ -8,11 +8,11 @@ import {
   Relation,
   UpdateDateColumn,
 } from 'typeorm';
-import { UldHistory } from '../../uld-history/entities/uld-history.entity';
 import { ApiProperty } from '@nestjs/swagger';
-import { BuildUpOrder } from '../../build-up-order/entities/build-up-order.entity';
-import { AsrsOutOrder } from '../../asrs-out-order/entities/asrs-out-order.entity';
 import { SkidPlatformHistory } from '../../skid-platform-history/entities/skid-platform-history.entity';
+import { BuildUpOrder } from '../../../../ps/build-up-order/entities/build-up-order.entity';
+import { AsrsOutOrder } from '../../../../ps/asrs-out-order/entities/asrs-out-order.entity';
+import { UldHistory } from '../../../uld/uld-history/entities/uld-history.entity';
 
 @Entity()
 export class SkidPlatform {

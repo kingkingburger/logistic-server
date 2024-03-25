@@ -10,9 +10,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Asrs } from '../../asrs/entities/asrs.entity';
-import { Awb } from '../../awb/entities/awb.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEnum, IsNotEmpty, IsNumber, IsString, Min } from 'class-validator';
+import { Awb } from '../../../../cargo/awb/entities/awb.entity';
 
 @Entity()
 @Unique(['inOutType', 'Awb', 'Asrs'])

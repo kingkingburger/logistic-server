@@ -12,9 +12,9 @@ import {
   Repository,
 } from 'typeorm';
 import { AsrsHistory } from './entities/asrs-history.entity';
-import { Awb, AwbAttribute } from '../awb/entities/awb.entity';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
-import { orderByUtil } from '../lib/util/orderBy.util';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
+import { Awb, AwbAttribute } from '../../../cargo/awb/entities/awb.entity';
+import { orderByUtil } from '../../../../lib/util/orderBy.util';
 
 @Injectable()
 export class AsrsHistoryService {

@@ -16,7 +16,7 @@ import { TimeTable } from './entities/time-table.entity';
 import { UldAttribute } from '../uld/entities/uld.entity';
 import { AmrAttribute } from '../amr/entities/amr.entity';
 import { AwbAttribute } from '../awb/entities/awb.entity';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { AircraftScheduleAttributes } from '../aircraft-schedule/entities/aircraft-schedule.entity';
 
 @Injectable()

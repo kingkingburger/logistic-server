@@ -9,12 +9,12 @@ import {
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
-import { Awb } from '../../awb/entities/awb.entity';
 import { ApiProperty } from '@nestjs/swagger';
-import { AsrsOutOrder } from '../../asrs-out-order/entities/asrs-out-order.entity';
-import { Asrs } from '../../asrs/entities/asrs.entity';
 import { SkidPlatform } from '../../skid-platform/entities/skid-platform.entity';
 import { IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { Awb } from '../../../../cargo/awb/entities/awb.entity';
+import { AsrsOutOrder } from '../../../../ps/asrs-out-order/entities/asrs-out-order.entity';
+import { Asrs } from '../../../asrs/asrs/entities/asrs.entity';
 
 @Entity()
 @Unique(['inOutType', 'Awb', 'SkidPlatform', 'count', 'totalCount'])

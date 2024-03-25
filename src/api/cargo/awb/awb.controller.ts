@@ -37,7 +37,7 @@ import { TransactionManager } from '../../../lib/decorator/transaction.decorator
 import { ParseIdListPipe } from '../../../lib/pipe/parseIdList.pipe';
 import { winstonLogger } from '../../../lib/logger/winston.util';
 import { AlarmService } from '../../alarm/alarm.service';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 
 @Controller('awb')
 @ApiTags('[화물,vms]Awb')

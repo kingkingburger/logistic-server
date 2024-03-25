@@ -13,7 +13,7 @@ import { CreateCommonCodeDto } from './dto/create-common-code.dto';
 import { UpdateCommonCodeDto } from './dto/update-common-code.dto';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 import { CommonCode } from './entities/common-code.entity';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 
 @Controller('common-code')
 @ApiTags('[공통코드]common-code')

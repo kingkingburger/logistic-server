@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { Vms3D } from './entities/vms.entity';
 import { VmsService } from './vms.service';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';

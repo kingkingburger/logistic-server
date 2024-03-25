@@ -12,7 +12,7 @@ import { SccService } from './scc.service';
 import { CreateSccDto } from './dto/create-scc.dto';
 import { UpdateSccDto } from './dto/update-scc.dto';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { Scc } from './entities/scc.entity';
 
 @Controller('scc')
