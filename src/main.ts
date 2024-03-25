@@ -23,9 +23,6 @@ async function bootstrap() {
     logger: winstonLogger,
   });
 
-  // 스케줄러 프로세스 생성
-  // const sheduler = await NestFactory.create(WorkerModule);
-
   app.useGlobalPipes(new ValidationPipe()); // class validator 처리
   app.useGlobalFilters(new HttpExceptionFilter()); // Http 에러 처리
   app.useGlobalFilters(new TypeOrmExceptionFilter()); // Typeorm 에러 처리
@@ -61,23 +58,8 @@ async function bootstrap() {
       reconnectPeriod: 3000,
     },
   });
-  // const mqttApp = await NestFactory.createMicroservice<MicroserviceOptions>(
-  //   AppModule,
-  //   {
-  //     transport: Transport.MQTT,
-  //     preview: true,
-  //     options: {
-  //       url: `mqtt://${process.env.MQTT_HOST}:${process.env.MQTT_PORT}`,
-  //       // keepalive: 30000,
-  //       reconnectPeriod: 3000,
-  //     },
-  //   },
-  // );
-  // await mqttApp.listen();
   await app.startAllMicroservices();
   await app.listen(port);
-
-  // await sheduler.init(); // 스케줄러 프로세스 적용
 }
 
 bootstrap();
