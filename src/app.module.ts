@@ -27,7 +27,6 @@ import { TimeTableModule } from './time-table/time-table.module';
 import { AircraftModule } from './aircraft/aircraft.module';
 import { AircraftScheduleModule } from './aircraft-schedule/aircraft-schedule.module';
 import { CommonCodeModule } from './common-code/common-code.module';
-import { AwbGroupModule } from './awb-group/awb-group.module';
 import { MqttModule } from './mqtt.module';
 import { ScheduleModule } from '@nestjs/schedule';
 import { FileModule } from './file/file.module';
@@ -109,7 +108,6 @@ import { VmsAwbResultModule } from './vms-awb-result/vms-awb-result.module';
     AircraftModule,
     AircraftScheduleModule,
     CommonCodeModule,
-    AwbGroupModule,
 
     // mssql의 vms 테이블 설정
     VmsModule,

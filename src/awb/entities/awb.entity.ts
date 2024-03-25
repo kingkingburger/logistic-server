@@ -15,7 +15,6 @@ import { SimulatorHistory } from '../../simulator-history/entities/simulator-his
 import { AsrsHistory } from '../../asrs-history/entities/asrs-history.entity';
 import { SkidPlatformHistory } from '../../skid-platform-history/entities/skid-platform-history.entity';
 import { UldHistory } from '../../uld-history/entities/uld-history.entity';
-import { AwbGroup } from '../../awb-group/entities/awb-group.entity';
 import { TimeTable } from '../../time-table/entities/time-table.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { SimulatorResultAwbJoin } from '../../simulator-result-awb-join/entities/simulator-result-awb-join.entity';
@@ -267,9 +266,6 @@ export class Awb {
 
   @DeleteDateColumn()
   deletedAt: Date | null;
-
-  @ManyToOne(() => AwbGroup, (awbGroup) => awbGroup.awbs)
-  AwbGroup?: Relation<AwbGroup> | number;
 
   @ManyToOne(
     () => AircraftSchedule,

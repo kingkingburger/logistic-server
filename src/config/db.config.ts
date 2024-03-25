@@ -22,7 +22,6 @@ import { TimeTable } from '../time-table/entities/time-table.entity';
 import { Aircraft } from '../aircraft/entities/aircraft.entity';
 import { AircraftSchedule } from '../aircraft-schedule/entities/aircraft-schedule.entity';
 import { CommonCode } from '../common-code/entities/common-code.entity';
-import { AwbGroup } from '../awb-group/entities/awb-group.entity';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { Vms3D } from '../vms/entities/vms.entity';
 import { Hacs } from '../hacs/entities/hacs.entity';
@@ -65,7 +64,6 @@ const postgresConfig: TypeOrmModuleOptions = {
     Aircraft,
     AircraftSchedule,
     CommonCode,
-    AwbGroup,
     Alarm,
     AwbReturn,
   ],
