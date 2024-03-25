@@ -3,7 +3,6 @@ import { Inject, Injectable, LoggerService as LS } from '@nestjs/common';
 
 // lib
 import winston, { transports } from 'winston';
-import dayjs from 'dayjs';
 import { utilities } from 'nest-winston';
 
 const { errors, combine, timestamp, printf, prettyPrint } = winston.format;
@@ -12,7 +11,6 @@ const { errors, combine, timestamp, printf, prettyPrint } = winston.format;
 export class LoggerService implements LS {
   private logger: winston.Logger;
 
-  // constructor(service: string) {
   constructor(@Inject('SERVICE_NAME') private readonly serviceName: string) {
     this.logger = winston.createLogger({
       format: combine(timestamp(), prettyPrint()),
@@ -58,7 +56,6 @@ export class LoggerService implements LS {
   }
 
   log(message: any) {
-    // this.logger.log({ level: 'info', message });
     this.logger.log({ level: 'info', message });
   }
 
