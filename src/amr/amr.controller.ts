@@ -23,17 +23,6 @@ export class AmrController {
     return this.amrService.create(createAmrDto);
   }
 
-  // mssql이 연결 안됬을 때 태스트용도로 만들었던 api
-  @ApiOperation({
-    summary:
-      '[사용x] amr의 움직임 데이터 확인 테스트용 api, mssql에서 amr 데이터 스케줄러로 0.3초마다 동작됨, mssql이 연결 안됬을 때 태스트용도로 만들었던 api',
-    description: 'amr, amrCharge, amrChargeHistory 모두 등록함',
-  })
-  @Get('/test/moving-data')
-  createByPlc() {
-    return this.amrService.createAmrByHacs();
-  }
-
   @ApiQuery({ name: 'name', required: false, type: 'string' })
   @ApiQuery({ name: 'charging', required: false, type: 'boolean' })
   @ApiQuery({ name: 'prcsCD', required: false, type: 'string' })

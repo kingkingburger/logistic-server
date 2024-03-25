@@ -15,7 +15,7 @@ import { redisCustomProvider } from '../redis/redisCustomProvider';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Amr, AmrCharger, AmrChargeHistory, Alarm]),
+    TypeOrmModule.forFeature([Amr, Alarm]),
     TypeOrmModule.forFeature([Hacs], 'amrDB'),
     // mqtt 모듈설정
     MqttModule,
@@ -23,7 +23,6 @@ import { redisCustomProvider } from '../redis/redisCustomProvider';
   controllers: [AmrController],
   providers: [
     AmrService,
-    LoggerService,
     {
       provide: 'SERVICE_NAME', // 여기에서 프로바이더 이름을 지정합니다.
       useValue: 'AmrService', // 원하는 값을 useValue로 지정합니다.

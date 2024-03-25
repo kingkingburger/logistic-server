@@ -6,24 +6,18 @@ import { Amr } from './entities/amr.entity';
 import {
   Between,
   DataSource,
-  EntityManager,
   FindOperator,
   LessThanOrEqual,
   MoreThanOrEqual,
   QueryRunner,
   Repository,
-  Transaction,
   TypeORMError,
 } from 'typeorm';
-import { AmrCharger } from '../amr-charger/entities/amr-charger.entity';
-import { AmrChargeHistory } from '../amr-charge-history/entities/amr-charge-history.entity';
 import { ClientProxy } from '@nestjs/microservices';
-import { pairwise, take } from 'rxjs';
+import { take } from 'rxjs';
 import { orderByUtil } from '../lib/util/orderBy.util';
 import { Hacs } from '../hacs/entities/hacs.entity';
-import { LoggerService } from '../lib/logger/logger.service';
 import dayjs from 'dayjs';
-import { AlarmService } from '../alarm/alarm.service';
 import { amrErrorData } from '../worker/amrErrorData';
 import process from 'process';
 import { RedisService } from '../redis/redis.service';
@@ -37,16 +31,11 @@ import { winstonLogger } from '../lib/logger/winston.util';
 export class AmrService {
   constructor(
     @InjectRepository(Amr) private readonly amrRepository: Repository<Amr>,
-    @InjectRepository(AmrCharger)
-    private readonly amrChargerRepository: Repository<AmrCharger>,
-    @InjectRepository(AmrChargeHistory)
-    private readonly amrChargeHistoryRepository: Repository<AmrChargeHistory>,
     private dataSource: DataSource,
     @Inject('MQTT_SERVICE') private client: ClientProxy,
+
     @InjectRepository(Hacs, 'amrDB')
     private readonly hacsRepository: Repository<Hacs>,
-    private readonly loggerService: LoggerService,
-    private readonly alarmService: AlarmService,
     private redisService: RedisService,
   ) {}
 
@@ -124,24 +113,6 @@ export class AmrService {
           amr: null,
           amrCharger: null,
         };
-
-        // const amrChargerResult = await this.amrChargerRepository.upsert(
-        //   amrChargerBody,
-        //   ['name'],
-        // );
-
-        // 로봇의 상태 데이터를 업데이트 하기 위해 시간 데이터들 중 name이 같으면 update를 침
-        // Amr 생성, amr충전 생성 될 시에만 이력 저장
-        // if (
-        //   amrResult.identifiers[0].id &&
-        //   amrChargerResult.identifiers[0].id &&
-        //   amrBody.charging
-        // ) {
-        //   amrChargeHistoryBody.amr = amrResult.identifiers[0].id;
-        //   amrChargeHistoryBody.amrCharger = amrChargerResult.identifiers[0].id;
-        //
-        //   await this.amrChargeHistoryRepository.save(amrChargeHistoryBody);
-        // }
       }
 
       // amr의 에러code가 오면 그 에러 코드로 알람 발생
@@ -219,11 +190,6 @@ export class AmrService {
         await this.redisService.setHash(`${acs.AMRNM}`, 'createdAt', now);
       }
 
-      // const previousAmrBody = await this.alarmService.getPreviousAlarmState(
-      //   acs?.AMRNM,
-      //   amrErrorData[acs?.ErrorCode],
-      // );
-
       // 이전의 알람과 현재의 알람이 다르다면 create
       if (
         +previousAmrErrorCode !== errorCodeNumber ||
@@ -274,20 +240,12 @@ export class AmrService {
   findAll(
     name?: string,
     charging?: boolean,
-    prcsCD?: string,
-    ACSMode?: boolean,
     mode?: number,
-    errorLevel?: number,
     errorCode?: string,
-    startTimeFrom?: Date,
-    startTimeTo?: Date,
-    endTimeFrom?: Date,
-    endTimeTo?: Date,
     travelDist?: number,
     oprTime?: number,
     stopTime?: number,
     startBatteryLevel?: number,
-    lastBatteryLevel?: number,
     simulation?: boolean,
     logDT?: string,
     distinguish?: string,
@@ -306,40 +264,16 @@ export class AmrService {
       findDate = LessThanOrEqual(createdAtTo);
     }
 
-    let findStartDate: FindOperator<Date>;
-    if (startTimeFrom && startTimeTo) {
-      findStartDate = Between(startTimeFrom, startTimeTo);
-    } else if (startTimeFrom) {
-      findStartDate = MoreThanOrEqual(startTimeFrom);
-    } else if (startTimeTo) {
-      findStartDate = LessThanOrEqual(startTimeTo);
-    }
-
-    let findEndDate: FindOperator<Date>;
-    if (endTimeFrom && endTimeTo) {
-      findEndDate = Between(endTimeFrom, endTimeTo);
-    } else if (endTimeFrom) {
-      findEndDate = MoreThanOrEqual(endTimeFrom);
-    } else if (endTimeTo) {
-      findEndDate = LessThanOrEqual(endTimeTo);
-    }
-
     return this.amrRepository.find({
       where: {
         name: name,
         charging: charging,
-        // prcsCD: prcsCD,
-        // ACSMode: ACSMode,
         mode: mode,
-        // errorLevel: errorLevel,
         errorCode: errorCode,
-        // startTime: findStartDate,
-        // endTime: findEndDate,
         travelDist: travelDist,
         oprTime: oprTime,
         stopTime: stopTime,
         startBatteryLevel: startBatteryLevel,
-        // lastBatteryLevel: lastBatteryLevel,
         simulation: simulation,
         logDT: logDT,
         distinguish: distinguish,
@@ -369,70 +303,4 @@ export class AmrService {
   removeRedis(amrNumber: string) {
     return this.redisService.deleteAllFieldsInHash(amrNumber);
   }
-
-  // 체적이 없는 화물을 검색하는 메서드
-  async getAwbInAmr() {
-    // 오늘 날짜의 시작과 끝을 구하고, KST로 변환합니다 (UTC+9).
-    const todayStart = dayjs().startOf('day').add(9, 'hour').toDate();
-    const todayEnd = dayjs().endOf('day').add(9, 'hour').toDate();
-
-    return await this.amrRepository.find({
-      where: {
-        createdAt: Between(todayStart, todayEnd),
-        // width: IsNull(), // modelPath가 null인 경우
-        // simulation: false, // simulation이 false인 경우
-      },
-      order: orderByUtil(null),
-      // take: limitNumber,
-    });
-  }
-
-  // public async makeAmrAlarm() {
-  //   const amrDataList = await this.hacsRepository.find({
-  //     // where: { Connected: 1 },
-  //     order: { LogDT: 'DESC' },
-  //     take: 5, // 최소한만 가져오려고 함(6 개)
-  //   });
-  //   for (const acs of amrDataList) {
-  //     if (!amrErrorData[acs?.ErrorCode]) {
-  //       return;
-  //     }
-  //
-  //     const previousAmrBody = await this.alarmService.getPreviousAlarmState(
-  //       amrData?.AMRNM,
-  //       amrErrorData[amrData?.ErrorCode],
-  //     );
-  //     const previousAmrBody = await this.alarmService.getPreviousAlarmState(
-  //       acs?.AMRNM,
-  //       amrErrorData[acs?.ErrorCode],
-  //     );
-  //
-  //     if (previousAmrBody) {
-  //       await this.alarmService.changeAlarm(previousAmrBody, true);
-  //     } else if (
-  //       !previousAmrBody
-  //       // &&
-  //       // amrData?.ErrorCode !== null &&
-  //       // amrErrorData[amrData?.ErrorCode] !== undefined &&
-  //       // previousAmrBody.alarmMessage !== amrErrorData[amrData?.ErrorCode]
-  //       // amrErrorData[amrData?.ErrorCode] !== previousAmrBody.alarmMessage
-  //     ) {
-  //       await this.alarmService.create({
-  //         equipmentName: amrData?.AMRNM,
-  //         stopTime: new Date(),
-  //         count: 1,
-  //         alarmMessage: amrErrorData[amrData?.ErrorCode],
-  //         done: false,
-  //       });
-  //       if (previousAmrBody) {
-  //         await this.alarmService.changeAlarm(previousAmrBody, true);
-  //       } else if (!previousAmrBody) {
-  //         await this.alarmService.create({
-  //           equipmentName: acs?.AMRNM,
-  //           stopTime: new Date(),
-  //           count: 1,
-  //           alarmMessage: amrErrorData[acs?.ErrorCode],
-  //           done: false,
-  //         });
-  //       }
 }
