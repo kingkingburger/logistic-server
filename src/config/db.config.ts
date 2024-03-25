@@ -65,7 +65,6 @@ const postgresConfig: TypeOrmModuleOptions = {
     AircraftSchedule,
     CommonCode,
     Alarm,
-    AwbReturn,
   ],
   // autoLoadEntities: true,  [버그있어서 사용 지양]
   logging: process.env.LOGGING === 'true', // 쿼리 보여주는 옵션

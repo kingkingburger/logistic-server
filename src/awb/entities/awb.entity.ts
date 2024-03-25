@@ -332,9 +332,6 @@ export class Awb {
     },
   })
   Scc: Scc[];
-
-  @OneToMany(() => AwbReturn, (awbReturn) => awbReturn.Awb)
-  AwbReturns: Relation<AwbReturn[]>;
 }
 
 export const AwbAttribute = {

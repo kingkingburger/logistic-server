@@ -129,7 +129,6 @@ import { VmsAwbResultModule } from './vms-awb-result/vms-awb-result.module';
     HacsModule,
     CheckModule,
     AlarmModule,
-    AwbReturnModule,
     WorkerModule,
     BasicModule,
     // ...(process.env.IF_ACTIVE === 'true' ? [WorkerModule] : []),
