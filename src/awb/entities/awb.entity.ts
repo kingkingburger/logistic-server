@@ -223,13 +223,6 @@ export class Awb {
   @Column({ type: 'boolean', nullable: true, default: false })
   ghost: boolean;
 
-  // @ApiProperty({
-  //   example: false,
-  //   description: '화물을 적재시 다른 화물을 위에 적재하지 말라는 옵션',
-  // })
-  // @Column({ type: 'boolean', nullable: true, default: false })
-  // ndsFromVms: boolean;
-
   @ApiProperty({
     example: false,
     description:
