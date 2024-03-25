@@ -25,7 +25,6 @@ import { AwbSccJoin } from '../awb-scc-join/entities/awb-scc-join.entity';
   imports: [
     TypeOrmModule.forFeature([
       SkidPlatformHistory,
-      AsrsOutOrder,
       Awb,
       Scc,
       AwbSccJoin,

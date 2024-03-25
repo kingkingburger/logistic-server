@@ -38,11 +38,9 @@ export class SkidPlatformHistoryService {
   constructor(
     @InjectRepository(SkidPlatformHistory)
     private readonly skidPlatformHistoryRepository: Repository<SkidPlatformHistory>,
-    @InjectRepository(AsrsOutOrder)
-    private readonly asrsOutOrderRepository: Repository<AsrsOutOrder>,
+
     @InjectRepository(Awb)
     private readonly awbRepository: Repository<Awb>,
-    private dataSource: DataSource,
     private redisService: RedisService,
     @Inject('MQTT_SERVICE') private client: ClientProxy,
   ) {}
@@ -335,10 +333,7 @@ export class SkidPlatformHistoryService {
   }
 
   async resetSkidPlatformAll() {
-    const skidPlatformResult = await this.skidPlatformHistoryRepository.delete(
-      {},
-    );
-
+    await this.skidPlatformHistoryRepository.delete({});
     return '안착대가 비었습니다.';
   }
 
@@ -405,24 +400,6 @@ export class SkidPlatformHistoryService {
   // on/off의 값을 return 하는 함수
   checkOnOff(body: CreateSkidPlatformAndAsrsPlcDto, onOffTag: string) {
     return body[onOffTag];
-  }
-
-  // in으로 상태 변경하는 메서드
-  shouldSetInSkidPlatform(
-    body: CreateSkidPlatformAndAsrsPlcDto,
-    onTag: string,
-    previousState: string | null,
-  ): boolean {
-    return body[onTag] && (previousState === 'out' || previousState === null);
-  }
-
-  // out으로 상태 변경하는 메서드
-  shouldSetOutSkidPlatform(
-    body: CreateAsrsPlcDto,
-    offTag: string,
-    previousState: string | null,
-  ): boolean {
-    return body[offTag] && previousState === 'in';
   }
 
   // in인지 out 인지 return 하는 함수
@@ -493,12 +470,6 @@ export class SkidPlatformHistoryService {
         await this.awbRepository.update(awb.id, { state: 'inskidplatform' });
       }
 
-      // skidPlatformHistory를 mqtt에 보내기 위함
-      // this.client
-      //   .send(`hyundai/skidPlatformHistory/insert`, skidPlatformHistoryFormIf)
-      //   .pipe(take(1))
-      //   .subscribe();
-
       // 현재 안착대에 어떤 화물이 들어왔는지 파악하기 위한 mqtt 전송 [작업지시 화면에서 필요함]
       const skidPlatformNowState = await this.nowState();
       this.client
@@ -552,23 +523,6 @@ export class SkidPlatformHistoryService {
       return awbResult;
     } catch (e) {
       console.error(e);
-    }
-  }
-
-  /**
-   * plc로 들어온 데이터중 화물 누락된 화물 데이터 체크
-   */
-  async checkAwb() {
-    for (let unitNumber = 1; unitNumber <= 4; unitNumber++) {
-      const unitKey = this.formatUnitNumber(unitNumber);
-
-      const awbNo = `SUPPLY_01_${unitKey}_P2A_Bill_No`;
-      const separateNumber = `SUPPLY_01_${unitKey}_P2A_SEPARATION_NO`;
-
-      // this.awbService.createAwbByPlcMqttUsingAsrsAndSkidPlatform(
-      //   awbNo,
-      //   +separateNumber,
-      // );
     }
   }
 }
