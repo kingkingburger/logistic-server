@@ -1,7 +1,7 @@
 import { ApiProperty, PickType } from '@nestjs/swagger';
 import { Awb } from '../entities/awb.entity';
 import { Scc } from '../../scc/entities/scc.entity';
-import { AircraftSchedule } from '../../aircraft-schedule/entities/aircraft-schedule.entity';
+import { AircraftSchedule } from '../../../flight/aircraft-schedule/entities/aircraft-schedule.entity';
 
 export class CreateAwbDto extends PickType(Awb, [
   'prefab',
@@ -24,7 +24,6 @@ export class CreateAwbDto extends PickType(Awb, [
   'path',
   'spawnRatio',
   'description',
-  'AwbGroup',
   'ghost',
   'gSkidOn',
   'awbTotalPiece',

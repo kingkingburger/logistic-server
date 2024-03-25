@@ -11,21 +11,20 @@ import {
   Relation,
   UpdateDateColumn,
 } from 'typeorm';
-import { SimulatorHistory } from '../../simulator-history/entities/simulator-history.entity';
-import { AsrsHistory } from '../../asrs-history/entities/asrs-history.entity';
-import { SkidPlatformHistory } from '../../skid-platform-history/entities/skid-platform-history.entity';
-import { UldHistory } from '../../uld-history/entities/uld-history.entity';
-import { TimeTable } from '../../time-table/entities/time-table.entity';
-import { ApiProperty } from '@nestjs/swagger';
-import { SimulatorResultAwbJoin } from '../../simulator-result-awb-join/entities/simulator-result-awb-join.entity';
-import { BuildUpOrder } from '../../build-up-order/entities/build-up-order.entity';
-import { AsrsOutOrder } from '../../asrs-out-order/entities/asrs-out-order.entity';
-import { IsEnum, IsString } from 'class-validator';
-import { Scc } from '../../scc/entities/scc.entity';
-import { SimulatorResult } from '../../simulator-result/entities/simulator-result.entity';
-import { AircraftSchedule } from '../../aircraft-schedule/entities/aircraft-schedule.entity';
-import { AwbReturn } from '../../awb-return/entities/awb-return.entity';
 import dayjs from 'dayjs';
+import { ApiProperty } from '@nestjs/swagger';
+import { IsEnum, IsString } from 'class-validator';
+import { AircraftSchedule } from '../../../flight/aircraft-schedule/entities/aircraft-schedule.entity';
+import { BuildUpOrder } from '../../../ps/build-up-order/entities/build-up-order.entity';
+import { SimulatorHistory } from '../../../ps/simulator-history/entities/simulator-history.entity';
+import { AsrsHistory } from '../../../facility/asrs/asrs-history/entities/asrs-history.entity';
+import { AsrsOutOrder } from '../../../ps/asrs-out-order/entities/asrs-out-order.entity';
+import { SkidPlatformHistory } from '../../../facility/skidPlat/skid-platform-history/entities/skid-platform-history.entity';
+import { UldHistory } from '../../../facility/uld/uld-history/entities/uld-history.entity';
+import { SimulatorResultAwbJoin } from '../../../ps/simulator-result-awb-join/entities/simulator-result-awb-join.entity';
+import { TimeTable } from '../../../time-table/entities/time-table.entity';
+import { SimulatorResult } from '../../../ps/simulator-result/entities/simulator-result.entity';
+import { Scc } from '../../scc/entities/scc.entity';
 
 @Entity()
 export class Awb {

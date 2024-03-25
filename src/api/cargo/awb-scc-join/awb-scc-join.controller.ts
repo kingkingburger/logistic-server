@@ -12,7 +12,7 @@ import { AwbSccJoinService } from './awb-scc-join.service';
 import { CreateAwbSccJoinDto } from './dto/create-awb-scc-join.dto';
 import { UpdateAwbSccJoinDto } from './dto/update-awb-scc-join.dto';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { AwbSccJoin } from './entities/awb-scc-join.entity';
 
 @Controller('Awb-Scc-join')

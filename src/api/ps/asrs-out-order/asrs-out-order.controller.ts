@@ -12,7 +12,7 @@ import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { AsrsOutOrderService } from './asrs-out-order.service';
 import { CreateAsrsOutOrderDto } from './dto/create-asrs-out-order.dto';
 import { UpdateAsrsOutOrderDto } from './dto/update-asrs-out-order.dto';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { AsrsOutOrder } from './entities/asrs-out-order.entity';
 
 @Controller('asrs-out-order')

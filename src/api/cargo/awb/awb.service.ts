@@ -13,7 +13,6 @@ import {
   IsNull,
   LessThanOrEqual,
   MoreThanOrEqual,
-  Not,
   QueryRunner,
   Repository,
   TypeORMError,
@@ -21,29 +20,23 @@ import {
 import { Awb } from './entities/awb.entity';
 import { AwbSccJoin } from '../awb-scc-join/entities/awb-scc-join.entity';
 import { Scc } from '../scc/entities/scc.entity';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
-import { orderByUtil } from '../lib/util/orderBy.util';
-import { FileService } from '../file/file.service';
-import { Vms3D } from '../vms/entities/vms.entity';
-import { MqttService } from '../mqtt.service';
-import { Vms2d } from '../vms2d/entities/vms2d.entity';
-import { CreateVmsDto } from '../vms/dto/create-vms.dto';
-import { CreateVms2dDto } from '../vms2d/dto/create-vms2d.dto';
-import { AwbUtilService } from './awbUtil.service';
-import { InjectionSccDto } from './dto/injection-scc.dto';
-import { VmsAwbResult } from '../vms-awb-result/entities/vms-awb-result.entity';
-import { CreateVmsAwbResultDto } from '../vms-awb-result/dto/create-vms-awb-result.dto';
-import { CreateVmsAwbHistoryDto } from '../vms-awb-history/dto/create-vms-awb-history.dto';
-import { VmsAwbHistory } from '../vms-awb-history/entities/vms-awb-history.entity';
-import { v4 as uuidv4 } from 'uuid';
 import dayjs from 'dayjs';
 import { PrepareBreakDownAwbInputDto } from './dto/prepare-break-down-awb-input.dto';
-import { breakDownRequest } from '../lib/util/axios.util';
+import { Vms3D } from '../../facility/vms/vms/entities/vms.entity';
+import { Vms2d } from '../../facility/vms/vms2d/entities/vms2d.entity';
+import { VmsAwbResult } from '../../facility/vms/vms-awb-result/entities/vms-awb-result.entity';
+import { VmsAwbHistory } from '../../facility/vms/vms-awb-history/entities/vms-awb-history.entity';
+import { FileService } from '../../../file/file.service';
+import { MqttService } from '../../../mqtt.service';
+import { AwbUtilService } from './awbUtil.service';
+import { SkidPlatformHistoryService } from '../../facility/skidPlat/skid-platform-history/skid-platform-history.service';
+import { InjectionSccDto } from './dto/injection-scc.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { orderByUtil } from '../../../lib/util/orderBy.util';
+import { winstonLogger } from '../../../lib/logger/winston.util';
+import { breakDownRequest } from '../../../lib/util/axios.util';
+import { CreateSkidPlatformHistoryDto } from '../../facility/skidPlat/skid-platform-history/dto/create-skid-platform-history.dto';
 import { breakDownAwb } from './dto/prepare-break-down-awb-output.dto';
-import { CreateSkidPlatformHistoryDto } from '../skid-platform-history/dto/create-skid-platform-history.dto';
-import { SkidPlatformHistoryService } from '../skid-platform-history/skid-platform-history.service';
-import process from 'process';
-import { winstonLogger } from '../lib/logger/winston.util';
 
 @Injectable()
 export class AwbService {

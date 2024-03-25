@@ -12,7 +12,7 @@ import { UldService } from './uld.service';
 import { CreateUldDto } from './dto/create-uld.dto';
 import { UpdateUldDto } from './dto/update-uld.dto';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { Uld } from './entities/uld.entity';
 import { ManageUldCountDto } from './dto/manage-uld-count.dto';
 

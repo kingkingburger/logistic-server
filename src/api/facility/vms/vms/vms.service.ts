@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Vms3D } from './entities/vms.entity';
 import { ILike, Repository } from 'typeorm';
 import { CreateVmsDto } from './dto/create-vms.dto';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { orderByUtil } from '../lib/util/orderBy.util';
 
 @Injectable()

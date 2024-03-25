@@ -12,7 +12,7 @@ import {
   Repository,
 } from 'typeorm';
 import { SkidPlatform } from './entities/skid-platform.entity';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { orderByUtil } from '../lib/util/orderBy.util';
 
 @Injectable()

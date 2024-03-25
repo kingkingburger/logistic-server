@@ -11,7 +11,7 @@ import {
   Repository,
 } from 'typeorm';
 import { AmrCharger } from './entities/amr-charger.entity';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { orderByUtil } from '../lib/util/orderBy.util';
 
 @Injectable()

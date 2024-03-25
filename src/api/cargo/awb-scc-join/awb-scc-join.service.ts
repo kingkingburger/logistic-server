@@ -12,7 +12,7 @@ import {
 } from 'typeorm';
 import { AwbSccJoin } from './entities/awb-scc-join.entity';
 import { AsrsHistory } from '../asrs-history/entities/asrs-history.entity';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { AsrsAttribute } from '../asrs/entities/asrs.entity';
 import { Awb, AwbAttribute } from '../awb/entities/awb.entity';
 import { Scc, SccAttribute } from '../scc/entities/scc.entity';

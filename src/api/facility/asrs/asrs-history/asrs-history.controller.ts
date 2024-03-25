@@ -12,7 +12,7 @@ import { AsrsHistoryService } from './asrs-history.service';
 import { CreateAsrsHistoryDto } from './dto/create-asrs-history.dto';
 import { UpdateAsrsHistoryDto } from './dto/update-asrs-history.dto';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { AsrsHistory } from './entities/asrs-history.entity';
 
 @Controller('asrs-history')

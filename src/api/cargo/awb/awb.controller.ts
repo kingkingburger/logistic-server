@@ -22,22 +22,22 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ConfigService } from '@nestjs/config';
 import { MessagePattern, Payload } from '@nestjs/microservices';
-import { TransactionInterceptor } from '../lib/interceptor/transaction.interfacepter';
-import { TransactionManager } from '../lib/decorator/transaction.decorator';
 import { EntityManager } from 'typeorm';
 
 import { UpdateAwbDto } from './dto/update-awb.dto';
 import { CreateAwbDto } from './dto/create-awb.dto';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
 import { PrepareBreakDownAwbInputDto } from './dto/prepare-break-down-awb-input.dto';
 import { InjectionSccDto } from './dto/injection-scc.dto';
 
 import { Awb } from './entities/awb.entity';
 import { AwbService } from './awb.service';
-import { ParseIdListPipe } from '../lib/pipe/parseIdList.pipe';
-import { AlarmService } from '../alarm/alarm.service';
 import process from 'process';
-import { winstonLogger } from '../lib/logger/winston.util';
+import { TransactionInterceptor } from '../../../lib/interceptor/transaction.interfacepter';
+import { TransactionManager } from '../../../lib/decorator/transaction.decorator';
+import { ParseIdListPipe } from '../../../lib/pipe/parseIdList.pipe';
+import { winstonLogger } from '../../../lib/logger/winston.util';
+import { AlarmService } from '../../alarm/alarm.service';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 
 @Controller('awb')
 @ApiTags('[화물,vms]Awb')

@@ -11,7 +11,7 @@ import {
   Repository,
 } from 'typeorm';
 import { SimulatorHistory } from './entities/simulator-history.entity';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { AwbAttribute } from '../awb/entities/awb.entity';
 import { UldAttribute } from '../uld/entities/uld.entity';
 import { SimulatorResultAttribute } from '../simulator-result/entities/simulator-result.entity';

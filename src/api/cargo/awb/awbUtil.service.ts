@@ -1,21 +1,22 @@
 import { Injectable } from '@nestjs/common';
-import { Vms3D } from '../vms/entities/vms.entity';
-import { Vms2d } from '../vms2d/entities/vms2d.entity';
 import { CreateAwbDto } from './dto/create-awb.dto';
 import { Awb } from './entities/awb.entity';
-import { orderByUtil } from '../lib/util/orderBy.util';
+
 import { AwbSccJoin } from '../awb-scc-join/entities/awb-scc-join.entity';
 import { Between, DataSource, In, Repository, TypeORMError } from 'typeorm';
-import { FileService } from '../file/file.service';
-import { MqttService } from '../mqtt.service';
 import { SccService } from '../scc/scc.service';
 import { Scc } from '../scc/entities/scc.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { VmsAwbHistory } from '../vms-awb-history/entities/vms-awb-history.entity';
-import { AircraftSchedule } from '../aircraft-schedule/entities/aircraft-schedule.entity';
-import { VmsAwbResult } from '../vms-awb-result/entities/vms-awb-result.entity';
-import { RedisService } from '../redis/redis.service';
 import dayjs from 'dayjs';
+import { orderByUtil } from '../../../lib/util/orderBy.util';
+import { AircraftSchedule } from '../../flight/aircraft-schedule/entities/aircraft-schedule.entity';
+import { FileService } from '../../../file/file.service';
+import { MqttService } from '../../../mqtt.service';
+import { RedisService } from '../../../redis/redis.service';
+import { Vms3D } from '../../facility/vms/vms/entities/vms.entity';
+import { Vms2d } from '../../facility/vms/vms2d/entities/vms2d.entity';
+import { VmsAwbResult } from '../../facility/vms/vms-awb-result/entities/vms-awb-result.entity';
+import { VmsAwbHistory } from '../../facility/vms/vms-awb-history/entities/vms-awb-history.entity';
 
 @Injectable()
 export class AwbUtilService {

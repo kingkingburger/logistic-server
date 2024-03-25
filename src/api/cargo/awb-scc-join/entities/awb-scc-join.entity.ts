@@ -1,17 +1,4 @@
-import {
-  Column,
-  CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  Relation,
-  UpdateDateColumn,
-} from 'typeorm';
-
-import { Scc } from '../../scc/entities/scc.entity';
-import { ApiProperty } from '@nestjs/swagger';
-import { Awb } from '../../awb/entities/awb.entity';
+import { Column, Entity } from 'typeorm';
 
 @Entity('awb_scc_join')
 export class AwbSccJoin {

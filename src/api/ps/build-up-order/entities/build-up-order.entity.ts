@@ -10,11 +10,12 @@ import {
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
-import { Uld } from '../../uld/entities/uld.entity';
-import { Awb } from '../../awb/entities/awb.entity';
-import { UldHistory } from '../../uld-history/entities/uld-history.entity';
+
 import { ApiProperty } from '@nestjs/swagger';
-import { SkidPlatform } from '../../skid-platform/entities/skid-platform.entity';
+import { Uld } from '../../../facility/uld/uld/entities/uld.entity';
+import { Awb } from '../../../cargo/awb/entities/awb.entity';
+import { UldHistory } from '../../../facility/uld/uld-history/entities/uld-history.entity';
+import { SkidPlatform } from '../../../facility/skidPlat/skid-platform/entities/skid-platform.entity';
 
 @Entity()
 @Unique(['Uld', 'Awb', 'x', 'y', 'z'])

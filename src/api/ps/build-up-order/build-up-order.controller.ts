@@ -12,7 +12,7 @@ import { BuildUpOrderService } from './build-up-order.service';
 import { CreateBuildUpOrderDto } from './dto/create-build-up-order.dto';
 import { UpdateBuildUpOrderDto } from './dto/update-build-up-order.dto';
 import { ApiBody, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { BuildUpOrder } from './entities/build-up-order.entity';
 
 @Controller('build-up-order')

@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 import { AmrChargeHistory } from './entities/amr-charge-history.entity';
 import { orderByUtil } from '../lib/util/orderBy.util';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 
 @Injectable()
 export class AmrChargeHistoryService {

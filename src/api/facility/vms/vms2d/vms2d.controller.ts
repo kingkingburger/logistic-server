@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { Vms2dService } from './vms2d.service';
 import { CreateVms2dDto } from './dto/create-vms2d.dto';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { Vms2d } from './entities/vms2d.entity';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 

@@ -12,8 +12,8 @@ import { AlarmService } from './alarm.service';
 import { CreateAlarmDto } from './dto/create-alarm.dto';
 import { UpdateAlarmDto } from './dto/update-alarm.dto';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
 import { Alarm } from './entities/alarm.entity';
+import { BasicQueryParamDto } from '../../lib/dto/basicQueryParam.dto';
 
 @Controller('alarm')
 @ApiTags('[알람] alarm')
