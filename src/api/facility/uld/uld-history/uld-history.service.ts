@@ -12,13 +12,13 @@ import {
 } from 'typeorm';
 import { UldHistory } from './entities/uld-history.entity';
 import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
-import { Awb, AwbAttribute } from '../awb/entities/awb.entity';
-import { SkidPlatformAttribute } from '../skid-platform/entities/skid-platform.entity';
 import { Uld, UldAttribute } from '../uld/entities/uld.entity';
 import { ClientProxy } from '@nestjs/microservices';
 import { UldService } from '../uld/uld.service';
 import { UldSccInjectionDto } from '../uld/dto/uld-sccInjection.dto';
-import { orderByUtil } from '../lib/util/orderBy.util';
+import { Awb, AwbAttribute } from '../../../cargo/awb/entities/awb.entity';
+import { SkidPlatformAttribute } from '../../skidPlat/skid-platform/entities/skid-platform.entity';
+import { orderByUtil } from '../../../../lib/util/orderBy.util';
 
 @Injectable()
 export class UldHistoryService {

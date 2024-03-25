@@ -4,7 +4,7 @@ import { UldTypeController } from './uld-type.controller';
 import { UldType } from './entities/uld-type.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MulterModule } from '@nestjs/platform-express';
-import { FileService } from '../file/file.service';
+import { FileService } from '../../../../file/file.service';
 
 @Module({
   imports: [

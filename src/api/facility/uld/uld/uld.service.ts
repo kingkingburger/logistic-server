@@ -20,15 +20,16 @@ import {
 import { UldSccInjectionDto } from './dto/uld-sccInjection.dto';
 import { UldSccJoin } from '../uld-scc-join/entities/uld-scc-join.entity';
 import { ClientProxy } from '@nestjs/microservices';
+
+import { UldHistoryAttribute } from '../uld-history/entities/uld-history.entity';
+import { ManageUldCountDto } from './dto/manage-uld-count.dto';
 import {
   AircraftSchedule,
   AircraftScheduleAttributes,
-} from '../aircraft-schedule/entities/aircraft-schedule.entity';
-import { UldHistoryAttribute } from '../uld-history/entities/uld-history.entity';
-import { AwbAttribute } from '../awb/entities/awb.entity';
-import { SccAttribute } from '../scc/entities/scc.entity';
-import { orderByUtil } from '../lib/util/orderBy.util';
-import { ManageUldCountDto } from './dto/manage-uld-count.dto';
+} from '../../../flight/aircraft-schedule/entities/aircraft-schedule.entity';
+import { AwbAttribute } from '../../../cargo/awb/entities/awb.entity';
+import { SccAttribute } from '../../../cargo/scc/entities/scc.entity';
+import { orderByUtil } from '../../../../lib/util/orderBy.util';
 
 @Injectable()
 export class UldService {

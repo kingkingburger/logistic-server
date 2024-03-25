@@ -9,11 +9,11 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Uld } from '../../uld/entities/uld.entity';
-import { Awb } from '../../awb/entities/awb.entity';
 import { ApiProperty } from '@nestjs/swagger';
-import { BuildUpOrder } from '../../build-up-order/entities/build-up-order.entity';
-import { SkidPlatform } from '../../skid-platform/entities/skid-platform.entity';
 import { IsNumber, Min } from 'class-validator';
+import { Awb } from '../../../../cargo/awb/entities/awb.entity';
+import { BuildUpOrder } from '../../../../ps/build-up-order/entities/build-up-order.entity';
+import { SkidPlatform } from '../../../skidPlat/skid-platform/entities/skid-platform.entity';
 
 @Entity()
 export class UldHistory {

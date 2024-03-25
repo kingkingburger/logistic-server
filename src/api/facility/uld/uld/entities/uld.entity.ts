@@ -12,16 +12,16 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { SimulatorResult } from '../../simulator-result/entities/simulator-result.entity';
-import { SimulatorHistory } from '../../simulator-history/entities/simulator-history.entity';
 import { UldType } from '../../uld-type/entities/uld-type.entity';
 import { UldHistory } from '../../uld-history/entities/uld-history.entity';
-import { TimeTable } from '../../time-table/entities/time-table.entity';
 import { ApiProperty } from '@nestjs/swagger';
-import { BuildUpOrder } from '../../build-up-order/entities/build-up-order.entity';
-import { Scc } from '../../scc/entities/scc.entity';
-import { AircraftSchedule } from '../../aircraft-schedule/entities/aircraft-schedule.entity';
-import { AsrsOutOrder } from '../../asrs-out-order/entities/asrs-out-order.entity';
+import { SimulatorResult } from '../../../../ps/simulator-result/entities/simulator-result.entity';
+import { SimulatorHistory } from '../../../../ps/simulator-history/entities/simulator-history.entity';
+import { TimeTable } from '../../../../time-table/entities/time-table.entity';
+import { BuildUpOrder } from '../../../../ps/build-up-order/entities/build-up-order.entity';
+import { Scc } from '../../../../cargo/scc/entities/scc.entity';
+import { AircraftSchedule } from '../../../../flight/aircraft-schedule/entities/aircraft-schedule.entity';
+import { AsrsOutOrder } from '../../../../ps/asrs-out-order/entities/asrs-out-order.entity';
 
 @Entity()
 export class Uld {

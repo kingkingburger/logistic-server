@@ -5,9 +5,9 @@ import { Uld } from './entities/uld.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UldSccJoin } from '../uld-scc-join/entities/uld-scc-join.entity';
 import { UldType } from '../uld-type/entities/uld-type.entity';
-import { MqttModule } from '../mqtt.module';
-import { AircraftSchedule } from '../aircraft-schedule/entities/aircraft-schedule.entity';
 import { UldHistory } from '../uld-history/entities/uld-history.entity';
+import { MqttModule } from '../../../../mqtt.module';
+import { AircraftSchedule } from '../../../flight/aircraft-schedule/entities/aircraft-schedule.entity';
 
 @Module({
   imports: [
