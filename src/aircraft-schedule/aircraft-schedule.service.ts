@@ -29,39 +29,12 @@ import { adjustDate } from '../lib/util/adjustDate';
 @Injectable()
 export class AircraftScheduleService {
   constructor(
-    @InjectRepository(Awb)
-    private readonly awbRepository: Repository<Awb>,
-    @InjectRepository(Uld)
-    private readonly uldRepository: Repository<Uld>,
-    @InjectRepository(UldType)
-    private readonly UldTypeRepository: Repository<UldType>,
     @InjectRepository(AircraftSchedule)
     private readonly aircraftScheduleRepository: Repository<AircraftSchedule>,
     @Inject('MQTT_SERVICE') private client: ClientProxy,
-    private dataSource: DataSource,
   ) {}
 
   async create(createAircraftScheduleDto: CreateAircraftScheduleDto) {
-    const insertResult = await this.aircraftScheduleRepository.save(
-      createAircraftScheduleDto,
-    );
-    this.client
-      .send(`hyundai/aircraftSchedule/insert`, insertResult)
-      .subscribe();
-    return insertResult;
-  }
-
-  async createWithAwbs(createAircraftScheduleDto: CreateAircraftScheduleDto) {
-    const { Awbs, ...aircraftSchedule } = createAircraftScheduleDto;
-
-    const aircraftScheduleResult = await this.aircraftScheduleRepository.save(
-      createAircraftScheduleDto,
-    );
-
-    for (const awb of Awbs) {
-      awb.AirCraftSchedule = aircraftScheduleResult.id;
-      const awbsResult = this.awbRepository.save(awb);
-    }
     const insertResult = await this.aircraftScheduleRepository.save(
       createAircraftScheduleDto,
     );
