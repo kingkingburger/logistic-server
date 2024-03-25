@@ -35,7 +35,6 @@ import { HacsModule } from './hacs/hacs.module';
 import { WorkerModule } from './worker/worker.module';
 import { CheckModule } from './check/check.module';
 import { AlarmModule } from './alarm/alarm.module';
-import { AwbReturnModule } from './awb-return/awb-return.module';
 
 import {
   amrConfig,
@@ -131,7 +130,6 @@ import { VmsAwbResultModule } from './vms-awb-result/vms-awb-result.module';
     AlarmModule,
     WorkerModule,
     BasicModule,
-    // ...(process.env.IF_ACTIVE === 'true' ? [WorkerModule] : []),
   ],
   controllers: [AppController],
   providers: [AppService],

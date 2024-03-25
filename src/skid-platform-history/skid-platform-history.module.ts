@@ -28,7 +28,6 @@ import { AwbSccJoin } from '../awb-scc-join/entities/awb-scc-join.entity';
       AsrsOutOrder,
       Awb,
       Scc,
-      Basic,
       AwbSccJoin,
       AircraftSchedule,
     ]),

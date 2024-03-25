@@ -95,7 +95,6 @@ import { AlarmService } from '../alarm/alarm.service';
       Awb,
       AwbSccJoin,
       Scc,
-      Basic,
       AsrsOutOrder,
       AircraftSchedule,
       SkidPlatformHistory,

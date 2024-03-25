@@ -21,8 +21,6 @@ export class SccService {
   constructor(
     @InjectRepository(Scc)
     private readonly sccRepository: Repository<Scc>,
-    @InjectRepository(Basic)
-    private readonly basicRepository: Repository<Basic>,
   ) {}
 
   async create(createSccDto: CreateSccDto) {

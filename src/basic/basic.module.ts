@@ -9,7 +9,7 @@ import { VmsAwbHistory } from '../vms-awb-history/entities/vms-awb-history.entit
 @Module({
   imports: [
     TypeOrmModule.forFeature([Basic]),
-    TypeOrmModule.forFeature([VmsAwbResult, VmsAwbHistory], 'dimoaDB'),
+    // TypeOrmModule.forFeature([VmsAwbResult, VmsAwbHistory], 'dimoaDB'),
   ],
   controllers: [BasicController],
   providers: [BasicService],

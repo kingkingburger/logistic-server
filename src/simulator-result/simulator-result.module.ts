@@ -52,7 +52,6 @@ import { Basic } from '../basic/entities/basic.entity';
       SkidPlatform,
       Scc,
       AircraftSchedule,
-      Basic,
     ]),
     // mqtt 모듈설정
     MqttModule,
