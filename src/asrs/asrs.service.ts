@@ -10,7 +10,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Asrs } from './entities/asrs.entity';
 import {
   Between,
-  DataSource,
   FindOperator,
   ILike,
   LessThanOrEqual,
@@ -45,7 +44,6 @@ export class AsrsService {
     private readonly awbRepository: Repository<Awb>,
     @InjectRepository(Alarm)
     private readonly alarmRepository: Repository<Alarm>,
-    private dataSource: DataSource,
     private redisService: RedisService,
     private readonly awbService: AwbService,
     private readonly alarmService: AlarmService,
@@ -288,7 +286,6 @@ export class AsrsService {
       }
 
       await this.recordOperation(unitNumber, awb?.id, inOutType);
-      // await this.settingRedis(String(unitNumber), state);
     } catch (error) {
       console.error(error.message);
     }
@@ -390,13 +387,6 @@ export class AsrsService {
       .subscribe();
   }
 
-  async findAsrsByName(name: string) {
-    return await this.asrsRepository.findOne({
-      where: { name: name },
-      order: orderByUtil(null),
-    });
-  }
-
   // barcode와 separateNumber로 target awb를 찾기 위한 함수
   async findAwbByBarcode(billNo: string, separateNumber: number) {
     try {
@@ -460,7 +450,6 @@ export class AsrsService {
   }
 
   // plc에서 들어온 데이터 중 에러 코드만 가지고 alarm 테이블에 저장하기
-  // TODO: 리팩토링 하기
   async makeAlarmFromPlc(body: CreateAsrsPlcDto) {
     const facilityArray = [
       'CONV_01_01_P2A_Total_Error',
@@ -558,16 +547,7 @@ export class AsrsService {
     }
   }
 
-  async changeAlarmIsDone(alarm: Alarm, done: boolean) {
-    await this.alarmRepository.update(alarm.id, {
-      done: done,
-    });
-  }
-
   async getPreviousAlarmState(equipmentName: string) {
-    // 오늘 날짜의 시작과 끝을 구하고, KST로 변환합니다 (UTC+9).
-    // const todayStart = dayjs().startOf('day').add(9, 'hour').toDate();
-    // const todayEnd = dayjs().endOf('day').add(18, 'hour').toDate();
     const todayStart = dayjs().startOf('day').toDate();
     const todayEnd = dayjs().endOf('day').toDate();
 

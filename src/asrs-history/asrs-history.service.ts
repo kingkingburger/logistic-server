@@ -5,7 +5,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Asrs, AsrsAttribute } from '../asrs/entities/asrs.entity';
 import {
   Between,
-  DataSource,
   Equal,
   FindOperator,
   LessThanOrEqual,
@@ -22,11 +21,6 @@ export class AsrsHistoryService {
   constructor(
     @InjectRepository(AsrsHistory)
     private readonly asrsHistoryRepository: Repository<AsrsHistory>,
-    @InjectRepository(Asrs)
-    private readonly asrsRepository: Repository<Asrs>,
-    @InjectRepository(Awb)
-    private readonly awbRepository: Repository<Awb>,
-    private dataSource: DataSource,
   ) {}
 
   async create(createAsrsHistoryDto: CreateAsrsHistoryDto) {
