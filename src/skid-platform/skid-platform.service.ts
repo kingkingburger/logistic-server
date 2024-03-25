@@ -12,7 +12,6 @@ import {
   Repository,
 } from 'typeorm';
 import { SkidPlatform } from './entities/skid-platform.entity';
-import { AsrsOutOrder } from '../asrs-out-order/entities/asrs-out-order.entity';
 import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
 import { orderByUtil } from '../lib/util/orderBy.util';
 
@@ -21,8 +20,6 @@ export class SkidPlatformService {
   constructor(
     @InjectRepository(SkidPlatform)
     private readonly skidPlatformRepository: Repository<SkidPlatform>,
-    @InjectRepository(AsrsOutOrder)
-    private readonly asrsOutOrderRepository: Repository<AsrsOutOrder>,
   ) {}
 
   async create(createSkidPlatformDto: CreateSkidPlatformDto) {
