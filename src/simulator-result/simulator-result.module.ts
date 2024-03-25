@@ -28,7 +28,6 @@ import { Scc } from '../scc/entities/scc.entity';
 import { AircraftSchedule } from '../aircraft-schedule/entities/aircraft-schedule.entity';
 import { FileService } from '../file/file.service';
 import { SccService } from '../scc/scc.service';
-import { Basic } from '../basic/entities/basic.entity';
 
 @Module({
   imports: [
@@ -64,10 +63,10 @@ import { Basic } from '../basic/entities/basic.entity';
     SkidPlatformHistoryService,
     UldHistoryService,
     UldService,
-    RedisService,
     AwbUtilService,
     FileService,
     SccService,
+    RedisService,
     ...redisCustomProvider,
   ],
 })

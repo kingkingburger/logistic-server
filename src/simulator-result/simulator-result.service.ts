@@ -75,24 +75,9 @@ export class SimulatorResultService {
   constructor(
     @InjectRepository(SimulatorResult)
     private readonly simulatorResultRepository: Repository<SimulatorResult>,
-    // @InjectRepository(AsrsHistory)
-    // private readonly asrsHistoryRepository: Repository<AsrsHistory>,
-    // @InjectRepository(SkidPlatformHistory)
-    // private readonly skidPlatformHistoryRepository: Repository<SkidPlatformHistory>,
-    // @InjectRepository(AsrsOutOrder)
-    // private readonly asrsOutOrderRepository: Repository<AsrsOutOrder>,
-    // @InjectRepository(BuildUpOrder)
-    // private readonly buildUpOrderRepository: Repository<BuildUpOrder>,
-    // @InjectRepository(Awb)
-    // private readonly awbRepository: Repository<Awb>,
-    // @InjectRepository(Asrs)
-    // private readonly asrsRepository: Repository<Asrs>,
-    // @InjectRepository(SkidPlatform)
-    // private readonly skidPlatformRepository: Repository<SkidPlatform>,
     @InjectRepository(Uld)
     private readonly uldRepository: Repository<Uld>,
     @Inject('MQTT_SERVICE') private client: ClientProxy,
-    private dataSource: DataSource,
     private readonly buildUpOrderService: BuildUpOrderService,
     private readonly asrsHistoryService: AsrsHistoryService,
     private readonly skidPlatformHistoryService: SkidPlatformHistoryService,
