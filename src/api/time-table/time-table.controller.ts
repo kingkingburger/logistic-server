@@ -12,8 +12,8 @@ import { TimeTableService } from './time-table.service';
 import { CreateTimeTableDto } from './dto/create-time-table.dto';
 import { UpdateTimeTableDto } from './dto/update-time-table.dto';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { TimeTable } from './entities/time-table.entity';
+import { BasicQueryParamDto } from '../../lib/dto/basicQueryParam.dto';
 
 @Controller('time-table')
 @ApiTags('[타임 테이블]time-table')

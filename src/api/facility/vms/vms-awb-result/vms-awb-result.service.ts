@@ -3,8 +3,8 @@ import { CreateVmsAwbResultDto } from './dto/create-vms-awb-result.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ILike, Repository } from 'typeorm';
 import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
-import { orderByUtil } from '../lib/util/orderBy.util';
 import { VmsAwbResult } from './entities/vms-awb-result.entity';
+import { orderByUtil } from '../../../../lib/util/orderBy.util';
 
 @Injectable()
 export class VmsAwbResultService {

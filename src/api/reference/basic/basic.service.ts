@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateBasicDto } from './dto/create-basic.dto';
 import { UpdateBasicDto } from './dto/update-basic.dto';
 import sql from 'mssql';
-import { Vms3D } from '../vms/entities/vms.entity';
+import { Vms3D } from '../../facility/vms/vms/entities/vms.entity';
 
 @Injectable()
 export class BasicService {

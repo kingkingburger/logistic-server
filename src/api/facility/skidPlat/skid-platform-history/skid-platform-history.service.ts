@@ -16,17 +16,17 @@ import { CreateSkidPlatformHistoryDto } from './dto/create-skid-platform-history
 import { UpdateSkidPlatformHistoryDto } from './dto/update-skid-platform-history.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SkidPlatformHistory } from './entities/skid-platform-history.entity';
-import { Awb, AwbAttribute } from '../awb/entities/awb.entity';
-import { AsrsAttribute } from '../asrs/entities/asrs.entity';
 import {
   SkidPlatform,
   SkidPlatformAttribute,
 } from '../skid-platform/entities/skid-platform.entity';
-import { AsrsOutOrderAttribute } from '../asrs-out-order/entities/asrs-out-order.entity';
-import { RedisService } from '../redis/redis.service';
-import { orderByUtil } from '../lib/util/orderBy.util';
 import process from 'process';
-import { winstonLogger } from '../lib/logger/winston.util';
+import { Awb, AwbAttribute } from '../../../cargo/awb/entities/awb.entity';
+import { AsrsAttribute } from '../../asrs/asrs/entities/asrs.entity';
+import { AsrsOutOrderAttribute } from '../../../ps/asrs-out-order/entities/asrs-out-order.entity';
+import { RedisService } from '../../../../redis/redis.service';
+import { orderByUtil } from '../../../../lib/util/orderBy.util';
+import { winstonLogger } from '../../../../lib/logger/winston.util';
 
 @Injectable()
 export class SkidPlatformHistoryService {

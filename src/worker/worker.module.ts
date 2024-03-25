@@ -1,10 +1,6 @@
 import { Module } from '@nestjs/common';
 import { WorkerService } from './worker.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Amr } from '../amr/entities/amr.entity';
-import { AmrCharger } from '../amr-charger/entities/amr-charger.entity';
-import { AmrChargeHistory } from '../amr-charge-history/entities/amr-charge-history.entity';
-import { Hacs } from '../hacs/entities/hacs.entity';
 import { MqttModule } from '../mqtt.module';
 import { ConfigModule } from '@nestjs/config';
 import {
@@ -14,29 +10,29 @@ import {
   postgresConfig,
 } from '../config/db.config';
 import { ScheduleModule } from '@nestjs/schedule';
-import { HacsModule } from '../hacs/hacs.module';
-import { AmrService } from '../amr/amr.service';
-import { LoggerService } from '../lib/logger/logger.service';
-import { Awb } from '../awb/entities/awb.entity';
-import { AwbSccJoin } from '../awb-scc-join/entities/awb-scc-join.entity';
-import { Scc } from '../scc/entities/scc.entity';
 import { MulterModule } from '@nestjs/platform-express';
 import { FileService } from '../file/file.service';
-import { AwbService } from '../awb/awb.service';
-import { Vms3D } from '../vms/entities/vms.entity';
-import { SccService } from '../scc/scc.service';
-import { Vms2d } from '../vms2d/entities/vms2d.entity';
-import { AwbUtilService } from '../awb/awbUtil.service';
-import { VmsAwbResult } from '../vms-awb-result/entities/vms-awb-result.entity';
-import { VmsAwbHistory } from '../vms-awb-history/entities/vms-awb-history.entity';
-import { AircraftSchedule } from '../aircraft-schedule/entities/aircraft-schedule.entity';
-import { SkidPlatformHistory } from '../skid-platform-history/entities/skid-platform-history.entity';
-import { SkidPlatformHistoryService } from '../skid-platform-history/skid-platform-history.service';
 import { RedisService } from '../redis/redis.service';
 import { redisCustomProvider } from '../redis/redisCustomProvider';
-import { AsrsOutOrder } from '../asrs-out-order/entities/asrs-out-order.entity';
-import { Alarm } from '../alarm/entities/alarm.entity';
-import { AlarmService } from '../alarm/alarm.service';
+import { Amr } from '../api/facility/amr/amr/entities/amr.entity';
+import { AmrCharger } from '../api/facility/amr/amr-charger/entities/amr-charger.entity';
+import { AmrChargeHistory } from '../api/facility/amr/amr-charge-history/entities/amr-charge-history.entity';
+import { Hacs } from '../api/facility/amr/hacs/entities/hacs.entity';
+import { HacsModule } from '../api/facility/amr/hacs/hacs.module';
+import { AmrService } from '../api/facility/amr/amr/amr.service';
+import { LoggerService } from '../lib/logger/logger.service';
+import { Awb } from '../api/cargo/awb/entities/awb.entity';
+import { Scc } from '../api/cargo/scc/entities/scc.entity';
+import { AwbService } from '../api/cargo/awb/awb.service';
+import { SccService } from '../api/cargo/scc/scc.service';
+import { AwbUtilService } from '../api/cargo/awb/awbUtil.service';
+import { VmsAwbResult } from '../api/facility/vms/vms-awb-result/entities/vms-awb-result.entity';
+import { VmsAwbHistory } from '../api/facility/vms/vms-awb-history/entities/vms-awb-history.entity';
+import { AircraftSchedule } from '../api/flight/aircraft-schedule/entities/aircraft-schedule.entity';
+import { SkidPlatformHistory } from '../api/facility/skidPlat/skid-platform-history/entities/skid-platform-history.entity';
+import { AsrsOutOrder } from '../api/ps/asrs-out-order/entities/asrs-out-order.entity';
+import { Alarm } from '../api/alarm/entities/alarm.entity';
+import { AlarmService } from '../api/alarm/alarm.service';
 
 @Module({
   imports: [

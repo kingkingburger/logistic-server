@@ -2,20 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { CreateAwbSccJoinDto } from './dto/create-awb-scc-join.dto';
 import { UpdateAwbSccJoinDto } from './dto/update-awb-scc-join.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import {
-  Between,
-  Equal,
-  FindOperator,
-  LessThanOrEqual,
-  MoreThanOrEqual,
-  Repository,
-} from 'typeorm';
+import { Repository } from 'typeorm';
 import { AwbSccJoin } from './entities/awb-scc-join.entity';
-import { AsrsHistory } from '../asrs-history/entities/asrs-history.entity';
-import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
-import { AsrsAttribute } from '../asrs/entities/asrs.entity';
-import { Awb, AwbAttribute } from '../awb/entities/awb.entity';
-import { Scc, SccAttribute } from '../scc/entities/scc.entity';
+import { Awb } from '../awb/entities/awb.entity';
+import { Scc } from '../scc/entities/scc.entity';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 
 @Injectable()
 export class AwbSccJoinService {

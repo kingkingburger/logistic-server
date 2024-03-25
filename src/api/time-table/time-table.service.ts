@@ -13,11 +13,11 @@ import {
   Repository,
 } from 'typeorm';
 import { TimeTable } from './entities/time-table.entity';
-import { UldAttribute } from '../uld/entities/uld.entity';
-import { AmrAttribute } from '../amr/entities/amr.entity';
-import { AwbAttribute } from '../awb/entities/awb.entity';
-import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
-import { AircraftScheduleAttributes } from '../aircraft-schedule/entities/aircraft-schedule.entity';
+import { UldAttribute } from '../facility/uld/uld/entities/uld.entity';
+import { AmrAttribute } from '../facility/amr/amr/entities/amr.entity';
+import { AwbAttribute } from '../cargo/awb/entities/awb.entity';
+import { BasicQueryParamDto } from '../../lib/dto/basicQueryParam.dto';
+import { AircraftScheduleAttributes } from '../flight/aircraft-schedule/entities/aircraft-schedule.entity';
 
 @Injectable()
 export class TimeTableService {

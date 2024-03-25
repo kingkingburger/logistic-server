@@ -12,8 +12,8 @@ import { AwbSccJoinService } from './awb-scc-join.service';
 import { CreateAwbSccJoinDto } from './dto/create-awb-scc-join.dto';
 import { UpdateAwbSccJoinDto } from './dto/update-awb-scc-join.dto';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { AwbSccJoin } from './entities/awb-scc-join.entity';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 
 @Controller('Awb-Scc-join')
 @ApiTags('[사용x] Awb-Scc-join')

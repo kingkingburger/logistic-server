@@ -8,11 +8,11 @@ import {
   Relation,
   UpdateDateColumn,
 } from 'typeorm';
-import { Uld } from '../../uld/entities/uld.entity';
-import { Amr } from '../../amr/entities/amr.entity';
-import { Awb } from '../../awb/entities/awb.entity';
 import { ApiProperty } from '@nestjs/swagger';
-import { AircraftSchedule } from '../../aircraft-schedule/entities/aircraft-schedule.entity';
+import { Uld } from '../../facility/uld/uld/entities/uld.entity';
+import { Amr } from '../../facility/amr/amr/entities/amr.entity';
+import { Awb } from '../../cargo/awb/entities/awb.entity';
+import { AircraftSchedule } from '../../flight/aircraft-schedule/entities/aircraft-schedule.entity';
 
 @Entity()
 export class TimeTable {

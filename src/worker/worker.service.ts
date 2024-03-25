@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { Interval } from '@nestjs/schedule';
-import { AmrService } from '../amr/amr.service';
-import { AwbService } from '../awb/awb.service';
 import { ConfigService } from '@nestjs/config';
+import { AmrService } from '../api/facility/amr/amr/amr.service';
+import { AwbService } from '../api/cargo/awb/awb.service';
 
 @Injectable()
 export class WorkerService {

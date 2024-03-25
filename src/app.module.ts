@@ -1,40 +1,8 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AmrModule } from './amr/amr.module';
-import { AmrChargerModule } from './amr-charger/amr-charger.module';
-import { AmrChargeHistoryModule } from './amr-charge-history/amr-charge-history.module';
-import { AsrsModule } from './asrs/asrs.module';
-import { AwbModule } from './awb/awb.module';
-import { AwbSccJoinModule } from './awb-scc-join/awb-scc-join.module';
-import { SccModule } from './scc/scc.module';
-import { UldModule } from './uld/uld.module';
-import { UldHistoryModule } from './uld-history/uld-history.module';
-import { UldSccJoinModule } from './uld-scc-join/uld-scc-join.module';
-import { UldTypeModule } from './uld-type/uld-type.module';
-import { AsrsOutOrderModule } from './asrs-out-order/asrs-out-order.module';
-import { BuildUpOrderModule } from './build-up-order/build-up-order.module';
-import { SkidPlatformModule } from './skid-platform/skid-platform.module';
-import { SkidPlatformHistoryModule } from './skid-platform-history/skid-platform-history.module';
-import { AsrsHistoryModule } from './asrs-history/asrs-history.module';
-import { SimulatorResultModule } from './simulator-result/simulator-result.module';
-import { SimulatorHistoryModule } from './simulator-history/simulator-history.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SimulatorResultAwbJoinModule } from './simulator-result-awb-join/simulator-result-awb-join.module';
-import { LoggerMiddleware } from './lib/logger/logger.middleware';
-import { TimeTableModule } from './time-table/time-table.module';
-import { AircraftModule } from './aircraft/aircraft.module';
-import { AircraftScheduleModule } from './aircraft-schedule/aircraft-schedule.module';
-import { CommonCodeModule } from './common-code/common-code.module';
-import { MqttModule } from './mqtt.module';
-import { ScheduleModule } from '@nestjs/schedule';
-import { FileModule } from './file/file.module';
-import { VmsModule } from './vms/vms.module';
-import { HacsModule } from './hacs/hacs.module';
-import { WorkerModule } from './worker/worker.module';
-import { CheckModule } from './check/check.module';
-import { AlarmModule } from './alarm/alarm.module';
 
 import {
   amrConfig,
@@ -43,11 +11,44 @@ import {
   postgresConfig,
 } from './config/db.config';
 import { RedisModule } from './redis/redis.module';
-import { Vms2dModule } from './vms2d/vms2d.module';
-import { BasicModule } from './basic/basic.module';
-import { VmsAwbResultModule } from './vms-awb-result/vms-awb-result.module';
+import { BasicModule } from './api/reference/basic/basic.module';
+import { LoggerMiddleware } from './lib/logger/logger.middleware';
+import { AmrModule } from './api/facility/amr/amr/amr.module';
+import { AmrChargerModule } from './api/facility/amr/amr-charger/amr-charger.module';
+import { AmrChargeHistoryModule } from './api/facility/amr/amr-charge-history/amr-charge-history.module';
+import { AsrsModule } from './api/facility/asrs/asrs/asrs.module';
+import { AwbModule } from './api/cargo/awb/awb.module';
+import { AwbSccJoinModule } from './api/cargo/awb-scc-join/awb-scc-join.module';
+import { SccModule } from './api/cargo/scc/scc.module';
+import { UldModule } from './api/facility/uld/uld/uld.module';
+import { UldHistoryModule } from './api/facility/uld/uld-history/uld-history.module';
+import { UldSccJoinModule } from './api/facility/uld/uld-scc-join/uld-scc-join.module';
+import { UldTypeModule } from './api/facility/uld/uld-type/uld-type.module';
+import { AsrsOutOrderModule } from './api/ps/asrs-out-order/asrs-out-order.module';
+import { BuildUpOrderModule } from './api/ps/build-up-order/build-up-order.module';
+import { SkidPlatformModule } from './api/facility/skidPlat/skid-platform/skid-platform.module';
+import { SkidPlatformHistoryModule } from './api/facility/skidPlat/skid-platform-history/skid-platform-history.module';
+import { AsrsHistoryModule } from './api/facility/asrs/asrs-history/asrs-history.module';
+import { SimulatorResultModule } from './api/ps/simulator-result/simulator-result.module';
+import { SimulatorHistoryModule } from './api/ps/simulator-history/simulator-history.module';
+import { SimulatorResultAwbJoinModule } from './api/ps/simulator-result-awb-join/simulator-result-awb-join.module';
+import { TimeTableModule } from './api/time-table/time-table.module';
+import { AircraftModule } from './api/flight/aircraft/aircraft.module';
+import { AircraftScheduleModule } from './api/flight/aircraft-schedule/aircraft-schedule.module';
+import { CommonCodeModule } from './api/reference/common-code/common-code.module';
+import { VmsModule } from './api/facility/vms/vms/vms.module';
+import { Vms2dModule } from './api/facility/vms/vms2d/vms2d.module';
+import { VmsAwbResultModule } from './api/facility/vms/vms-awb-result/vms-awb-result.module';
+import { MqttModule } from './mqtt.module';
+import { AlarmModule } from './api/alarm/alarm.module';
+import { WorkerModule } from './worker/worker.module';
+import { FileModule } from './file/file.module';
+import { HacsModule } from './api/facility/amr/hacs/hacs.module';
+import { CheckModule } from './api/check/check.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
+  controllers: [AppController],
   imports: [
     //env 파일 사용
     ConfigModule.forRoot({
@@ -131,7 +132,6 @@ import { VmsAwbResultModule } from './vms-awb-result/vms-awb-result.module';
     WorkerModule,
     BasicModule,
   ],
-  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule implements NestModule {
