@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { AlarmService } from './alarm.service';
 import { AlarmController } from './alarm.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MqttModule } from '../mqtt.module';
 import { Alarm } from './entities/alarm.entity';
+import { MqttModule } from '../../mqtt.module';
 
 @Module({
   imports: [

@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Vms3D } from '../vms/entities/vms.entity';
 import { CheckController } from './check.controller';
-import { MqttModule } from '../mqtt.module';
-import { MqttService } from '../mqtt.service';
-import { VmsAwbResult } from '../vms-awb-result/entities/vms-awb-result.entity';
-import { VmsAwbHistory } from '../vms-awb-history/entities/vms-awb-history.entity';
-import { Hacs } from '../hacs/entities/hacs.entity';
-import { FileService } from '../file/file.service';
+import { Hacs } from '../facility/amr/hacs/entities/hacs.entity';
+import { MqttModule } from '../../mqtt.module';
+import { MqttService } from '../../mqtt.service';
+import { FileService } from '../../file/file.service';
+import { Vms3D } from '../facility/vms/vms/entities/vms.entity';
+import { VmsAwbResult } from '../facility/vms/vms-awb-result/entities/vms-awb-result.entity';
+import { VmsAwbHistory } from '../facility/vms/vms-awb-history/entities/vms-awb-history.entity';
 
 @Module({
   imports: [

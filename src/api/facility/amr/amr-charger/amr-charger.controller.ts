@@ -12,8 +12,8 @@ import { AmrChargerService } from './amr-charger.service';
 import { CreateAmrChargerDto } from './dto/create-amr-charger.dto';
 import { UpdateAmrChargerDto } from './dto/update-amr-charger.dto';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { AmrCharger } from './entities/amr-charger.entity';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 
 @Controller('amr-charger')
 @ApiTags('[Amr 충전기]amr-charge')

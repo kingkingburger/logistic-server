@@ -10,8 +10,8 @@ import {
   Repository,
 } from 'typeorm';
 import { AmrChargeHistory } from './entities/amr-charge-history.entity';
-import { orderByUtil } from '../lib/util/orderBy.util';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
+import { orderByUtil } from '../../../../lib/util/orderBy.util';
 
 @Injectable()
 export class AmrChargeHistoryService {

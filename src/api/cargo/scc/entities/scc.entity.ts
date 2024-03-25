@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Awb } from '../../awb/entities/awb.entity';
-import { Uld } from '../../uld/entities/uld.entity';
+import { Uld } from '../../../facility/uld/uld/entities/uld.entity';
 
 @Entity()
 export class Scc {

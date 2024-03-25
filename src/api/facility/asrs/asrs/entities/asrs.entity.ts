@@ -10,8 +10,8 @@ import {
 import { AsrsHistory } from '../../asrs-history/entities/asrs-history.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsNumber, IsOptional, Min } from 'class-validator';
-import { AsrsOutOrder } from '../../asrs-out-order/entities/asrs-out-order.entity';
-import { SkidPlatformHistory } from '../../skid-platform-history/entities/skid-platform-history.entity';
+import { AsrsOutOrder } from '../../../../ps/asrs-out-order/entities/asrs-out-order.entity';
+import { SkidPlatformHistory } from '../../../skidPlat/skid-platform-history/entities/skid-platform-history.entity';
 
 @Entity()
 export class Asrs {

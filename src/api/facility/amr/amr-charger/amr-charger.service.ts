@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreateAmrChargerDto } from './dto/create-amr-charger.dto';
 import { UpdateAmrChargerDto } from './dto/update-amr-charger.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Amr } from '../amr/entities/amr.entity';
 import {
   Between,
   FindOperator,
@@ -11,8 +10,8 @@ import {
   Repository,
 } from 'typeorm';
 import { AmrCharger } from './entities/amr-charger.entity';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
-import { orderByUtil } from '../lib/util/orderBy.util';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
+import { orderByUtil } from '../../../../lib/util/orderBy.util';
 
 @Injectable()
 export class AmrChargerService {

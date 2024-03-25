@@ -3,15 +3,12 @@ import { AmrService } from './amr.service';
 import { AmrController } from './amr.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Amr } from './entities/amr.entity';
-import { AmrCharger } from '../amr-charger/entities/amr-charger.entity';
-import { AmrChargeHistory } from '../amr-charge-history/entities/amr-charge-history.entity';
-import { MqttModule } from '../mqtt.module';
 import { Hacs } from '../hacs/entities/hacs.entity';
-import { LoggerService } from '../lib/logger/logger.service';
-import { AlarmService } from '../alarm/alarm.service';
-import { Alarm } from '../alarm/entities/alarm.entity';
-import { RedisService } from '../redis/redis.service';
-import { redisCustomProvider } from '../redis/redisCustomProvider';
+import { MqttModule } from '../../../../mqtt.module';
+import { AlarmService } from '../../../alarm/alarm.service';
+import { RedisService } from '../../../../redis/redis.service';
+import { Alarm } from '../../../alarm/entities/alarm.entity';
+import { redisCustomProvider } from '../../../../redis/redisCustomProvider';
 
 @Module({
   imports: [

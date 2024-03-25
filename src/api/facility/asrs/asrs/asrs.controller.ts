@@ -24,12 +24,11 @@ import {
 import { Asrs } from './entities/asrs.entity';
 import { CreateAsrsPlcDto } from './dto/create-asrs-plc.dto';
 import { ClientProxy, MessagePattern, Payload } from '@nestjs/microservices';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
-import { SkidPlatformHistoryService } from '../skid-platform-history/skid-platform-history.service';
 import { ConfigService } from '@nestjs/config';
-import { AwbService } from '../awb/awb.service';
 import process from 'process';
-import { winstonLogger } from '../lib/logger/winston.util';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
+import { SkidPlatformHistoryService } from '../../skidPlat/skid-platform-history/skid-platform-history.service';
+import { winstonLogger } from '../../../../lib/logger/winston.util';
 
 @Controller('asrs')
 @ApiTags('[자동창고]Asrs')

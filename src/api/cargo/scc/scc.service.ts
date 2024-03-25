@@ -13,8 +13,7 @@ import {
 } from 'typeorm';
 import { Scc } from './entities/scc.entity';
 import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
-import { orderByUtil } from '../lib/util/orderBy.util';
-import { Basic } from '../basic/entities/basic.entity';
+import { orderByUtil } from '../../../lib/util/orderBy.util';
 
 @Injectable()
 export class SccService {

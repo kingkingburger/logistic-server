@@ -9,9 +9,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { AmrChargeHistory } from '../../amr-charge-history/entities/amr-charge-history.entity';
-import { TimeTable } from '../../time-table/entities/time-table.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
+import { TimeTable } from '../../../../time-table/entities/time-table.entity';
 
 @Entity()
 export class Amr {

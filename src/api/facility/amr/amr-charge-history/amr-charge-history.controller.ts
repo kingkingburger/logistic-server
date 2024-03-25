@@ -12,8 +12,8 @@ import { AmrChargeHistoryService } from './amr-charge-history.service';
 import { CreateAmrChargeHistoryDto } from './dto/create-amr-charge-history.dto';
 import { UpdateAmrChargeHistoryDto } from './dto/update-amr-charge-history.dto';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { AmrChargeHistory } from './entities/amr-charge-history.entity';
+import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 
 @Controller('amr-charge-history')
 @ApiTags('[Amr 충전이력]amr-charge-history')
