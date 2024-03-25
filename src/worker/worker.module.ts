@@ -33,6 +33,10 @@ import { SkidPlatformHistory } from '../api/facility/skidPlat/skid-platform-hist
 import { AsrsOutOrder } from '../api/ps/asrs-out-order/entities/asrs-out-order.entity';
 import { Alarm } from '../api/alarm/entities/alarm.entity';
 import { AlarmService } from '../api/alarm/alarm.service';
+import { AwbSccJoin } from '../api/cargo/awb-scc-join/entities/awb-scc-join.entity';
+import { Vms3D } from '../api/facility/vms/vms/entities/vms.entity';
+import { Vms2d } from '../api/facility/vms/vms2d/entities/vms2d.entity';
+import { SkidPlatformHistoryService } from '../api/facility/skidPlat/skid-platform-history/skid-platform-history.service';
 
 @Module({
   imports: [
