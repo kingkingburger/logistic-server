@@ -19,7 +19,6 @@ import { ClientProxy } from '@nestjs/microservices';
 import { UldService } from '../uld/uld.service';
 import { UldSccInjectionDto } from '../uld/dto/uld-sccInjection.dto';
 import { orderByUtil } from '../lib/util/orderBy.util';
-import { log } from 'console';
 
 @Injectable()
 export class UldHistoryService {
@@ -63,14 +62,6 @@ export class UldHistoryService {
     this.publishMqttMessage(`hyundai/uldHistory/insert`, savedHistory);
 
     return savedHistory;
-  }
-
-  async saveHistory(createUldHistoryDto: CreateUldHistoryDto) {
-    const saveResult = await this.uldHistoryRepository.save(
-      createUldHistoryDto,
-    );
-    this.publishMqttMessage(`hyundai/uldHistory/insert`, saveResult);
-    return saveResult;
   }
 
   async saveHistoryList(createUldHistoryDtoList: CreateUldHistoryDto[]) {
@@ -156,10 +147,9 @@ export class UldHistoryService {
   }
 
   async findOne(id: number) {
-    const result = await this.uldHistoryRepository.findOne({
+    return await this.uldHistoryRepository.findOne({
       where: { id: id },
     });
-    return result;
   }
 
   // uld 이력에서 uld_id를 기준으로 최신 안착대의 상태만 가져옴
@@ -172,7 +162,7 @@ export class UldHistoryService {
       throw new NotFoundException('uld가 없습니다.');
     }
 
-    const uldHistory = await this.uldHistoryRepository
+    return await this.uldHistoryRepository
       .createQueryBuilder('uh')
       .leftJoinAndSelect('uh.Awb', 'Awb')
       .leftJoinAndSelect('Awb.Scc', 'Scc')
@@ -180,8 +170,6 @@ export class UldHistoryService {
       .andWhere('uh.Uld = :uldId', { uldId: targetUld.id })
       .orderBy('uh.id', 'ASC')
       .getMany();
-
-    return uldHistory;
   }
 
   update(id: number, updateUldHistoryDto: UpdateUldHistoryDto) {
