@@ -9,12 +9,12 @@ import {
   Relation,
   UpdateDateColumn,
 } from 'typeorm';
-import { Awb } from '../../awb/entities/awb.entity';
 import { ApiProperty } from '@nestjs/swagger';
-import { Asrs } from '../../asrs/entities/asrs.entity';
-import { SkidPlatform } from '../../skid-platform/entities/skid-platform.entity';
-import { SkidPlatformHistory } from '../../skid-platform-history/entities/skid-platform-history.entity';
-import { Uld } from '../../uld/entities/uld.entity';
+import { Awb } from '../../../cargo/awb/entities/awb.entity';
+import { SkidPlatform } from '../../../facility/skidPlat/skid-platform/entities/skid-platform.entity';
+import { SkidPlatformHistory } from '../../../facility/skidPlat/skid-platform-history/entities/skid-platform-history.entity';
+import { Uld } from '../../../facility/uld/uld/entities/uld.entity';
+import { Asrs } from '../../../facility/asrs/asrs/entities/asrs.entity';
 
 @Entity()
 export class AsrsOutOrder {

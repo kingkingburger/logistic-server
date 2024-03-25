@@ -3,13 +3,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AsrsOutOrder } from './entities/asrs-out-order.entity';
 import { AsrsOutOrderController } from './asrs-out-order.controller';
 import { AsrsOutOrderService } from './asrs-out-order.service';
-import { MqttModule } from '../mqtt.module';
-import { AsrsHistoryService } from '../asrs-history/asrs-history.service';
-import { AsrsHistory } from '../asrs-history/entities/asrs-history.entity';
-import { Asrs } from '../asrs/entities/asrs.entity';
-import { Awb } from '../awb/entities/awb.entity';
-import { RedisService } from '../redis/redis.service';
-import { redisCustomProvider } from '../redis/redisCustomProvider';
+import { MqttModule } from '../../../mqtt.module';
+import { AsrsHistoryService } from '../../facility/asrs/asrs-history/asrs-history.service';
+import { AsrsHistory } from '../../facility/asrs/asrs-history/entities/asrs-history.entity';
+import { Asrs } from '../../facility/asrs/asrs/entities/asrs.entity';
+import { Awb } from '../../cargo/awb/entities/awb.entity';
+import { RedisService } from '../../../redis/redis.service';
+import { redisCustomProvider } from '../../../redis/redisCustomProvider';
 
 @Module({
   imports: [

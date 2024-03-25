@@ -11,11 +11,11 @@ import {
   Relation,
   UpdateDateColumn,
 } from 'typeorm';
-import { Uld } from '../../uld/entities/uld.entity';
 import { SimulatorHistory } from '../../simulator-history/entities/simulator-history.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
-import { Awb } from '../../awb/entities/awb.entity';
+import { Uld } from '../../../facility/uld/uld/entities/uld.entity';
+import { Awb } from '../../../cargo/awb/entities/awb.entity';
 
 @Entity()
 export class SimulatorResult {

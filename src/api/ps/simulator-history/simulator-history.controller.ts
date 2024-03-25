@@ -12,8 +12,8 @@ import { SimulatorHistoryService } from './simulator-history.service';
 import { CreateSimulatorHistoryDto } from './dto/create-simulator-history.dto';
 import { UpdateSimulatorHistoryDto } from './dto/update-simulator-history.dto';
 import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
-import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { SimulatorHistory } from './entities/simulator-history.entity';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 
 @Controller('simulator-history')
 @ApiTags('[시뮬레이터 이력]simulator-history')

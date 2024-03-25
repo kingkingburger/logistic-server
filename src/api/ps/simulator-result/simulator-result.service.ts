@@ -8,7 +8,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { SimulatorResult } from './entities/simulator-result.entity';
 import {
   Between,
-  DataSource,
   EntityManager,
   Equal,
   FindOperator,
@@ -21,16 +20,10 @@ import {
 } from 'typeorm';
 import { CreateSimulatorResultDto } from './dto/create-simulator-result.dto';
 import { UpdateSimulatorResultDto } from './dto/update-simulator-result.dto';
-import { Uld, UldAttribute } from '../uld/entities/uld.entity';
 import { SimulatorResultAwbJoin } from '../simulator-result-awb-join/entities/simulator-result-awb-join.entity';
 import { SimulatorHistory } from '../simulator-history/entities/simulator-history.entity';
 import { CreateSimulatorHistoryDto } from '../simulator-history/dto/create-simulator-history.dto';
 import { CreateSimulatorResultAwbJoinDto } from '../simulator-result-awb-join/dto/create-simulator-result-awb-join.dto';
-import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
-import { orderByUtil } from '../lib/util/orderBy.util';
-import { Awb, AwbAttribute } from '../awb/entities/awb.entity';
-import { AsrsHistory } from '../asrs-history/entities/asrs-history.entity';
-import { SkidPlatformHistory } from '../skid-platform-history/entities/skid-platform-history.entity';
 import { AsrsOutOrder } from '../asrs-out-order/entities/asrs-out-order.entity';
 import { CreateAsrsOutOrderDto } from '../asrs-out-order/dto/create-asrs-out-order.dto';
 import { CreateBuildUpOrderDto } from '../build-up-order/dto/create-build-up-order.dto';
@@ -39,25 +32,8 @@ import { take } from 'rxjs';
 import { BuildUpOrderService } from '../build-up-order/build-up-order.service';
 
 import { PsApiRequest } from './dto/ps-input.dto';
-import { Asrs } from '../asrs/entities/asrs.entity';
-import {
-  UldType,
-  UldTypeAttribute,
-} from '../uld-type/entities/uld-type.entity';
-import {
-  getAWBinPalletRack,
-  getOrderDischarge,
-  getUserSelect,
-  packageSimulatorCallAll,
-  reboot,
-  uldDeployCheckerRequest,
-} from '../lib/util/axios.util';
-import { AsrsHistoryService } from '../asrs-history/asrs-history.service';
-import { SkidPlatformHistoryService } from '../skid-platform-history/skid-platform-history.service';
+
 import { userSelectInput } from './dto/user-select-input.dto';
-import { SkidPlatform } from '../skid-platform/entities/skid-platform.entity';
-import { UldHistoryService } from '../uld-history/uld-history.service';
-import { UldHistory } from '../uld-history/entities/uld-history.entity';
 import { UserSelectResult } from './dto/user-select-output';
 import { AWBGroupResult } from './dto/ps-output.dto';
 import { PsAllRequest } from './dto/ps-all-input.dto';
@@ -66,9 +42,33 @@ import {
   UldDeployCheckerListRequest,
   UldDeployCheckerRequest,
 } from './dto/uld-deploy-checker-input.dto';
-import { AwbUtilService } from '../awb/awbUtil.service';
 import process from 'process';
-import { winstonLogger } from '../lib/logger/winston.util';
+import { Uld, UldAttribute } from '../../facility/uld/uld/entities/uld.entity';
+import { AsrsHistoryService } from '../../facility/asrs/asrs-history/asrs-history.service';
+import { SkidPlatformHistoryService } from '../../facility/skidPlat/skid-platform-history/skid-platform-history.service';
+import { UldHistoryService } from '../../facility/uld/uld-history/uld-history.service';
+import { AwbUtilService } from '../../cargo/awb/awbUtil.service';
+import { winstonLogger } from '../../../lib/logger/winston.util';
+import {
+  getAWBinPalletRack,
+  getOrderDischarge,
+  getUserSelect,
+  packageSimulatorCallAll,
+  reboot,
+  uldDeployCheckerRequest,
+} from '../../../lib/util/axios.util';
+import { Asrs } from '../../facility/asrs/asrs/entities/asrs.entity';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { Awb, AwbAttribute } from '../../cargo/awb/entities/awb.entity';
+import { orderByUtil } from '../../../lib/util/orderBy.util';
+import {
+  UldType,
+  UldTypeAttribute,
+} from '../../facility/uld/uld-type/entities/uld-type.entity';
+import { AsrsHistory } from '../../facility/asrs/asrs-history/entities/asrs-history.entity';
+import { UldHistory } from '../../facility/uld/uld-history/entities/uld-history.entity';
+import { SkidPlatformHistory } from '../../facility/skidPlat/skid-platform-history/entities/skid-platform-history.entity';
+import { SkidPlatform } from '../../facility/skidPlat/skid-platform/entities/skid-platform.entity';
 
 @Injectable()
 export class SimulatorResultService {

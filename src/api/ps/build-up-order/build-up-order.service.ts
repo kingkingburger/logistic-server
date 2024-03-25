@@ -13,12 +13,12 @@ import {
   TypeORMError,
 } from 'typeorm';
 import { BuildUpOrder } from './entities/build-up-order.entity';
-import { SkidPlatformAttribute } from '../skid-platform/entities/skid-platform.entity';
-import { UldAttribute } from '../uld/entities/uld.entity';
-import { AwbAttribute } from '../awb/entities/awb.entity';
-import { UldHistory } from '../uld-history/entities/uld-history.entity';
-import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
-import { orderByUtil } from '../lib/util/orderBy.util';
+import { SkidPlatformAttribute } from '../../facility/skidPlat/skid-platform/entities/skid-platform.entity';
+import { UldAttribute } from '../../facility/uld/uld/entities/uld.entity';
+import { AwbAttribute } from '../../cargo/awb/entities/awb.entity';
+import { UldHistory } from '../../facility/uld/uld-history/entities/uld-history.entity';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { orderByUtil } from '../../../lib/util/orderBy.util';
 
 @Injectable()
 export class BuildUpOrderService {

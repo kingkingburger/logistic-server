@@ -12,8 +12,8 @@ import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
 import { AsrsOutOrderService } from './asrs-out-order.service';
 import { CreateAsrsOutOrderDto } from './dto/create-asrs-out-order.dto';
 import { UpdateAsrsOutOrderDto } from './dto/update-asrs-out-order.dto';
-import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
 import { AsrsOutOrder } from './entities/asrs-out-order.entity';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 
 @Controller('asrs-out-order')
 @ApiTags('[자동창고 작업지시]asrs-out-order')

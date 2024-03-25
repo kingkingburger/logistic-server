@@ -11,10 +11,10 @@ import {
   Repository,
 } from 'typeorm';
 import { SimulatorHistory } from './entities/simulator-history.entity';
-import { BasicQueryParamDto } from '../../../../lib/dto/basicQueryParam.dto';
-import { AwbAttribute } from '../awb/entities/awb.entity';
-import { UldAttribute } from '../uld/entities/uld.entity';
 import { SimulatorResultAttribute } from '../simulator-result/entities/simulator-result.entity';
+import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
+import { AwbAttribute } from '../../cargo/awb/entities/awb.entity';
+import { UldAttribute } from '../../facility/uld/uld/entities/uld.entity';
 
 @Injectable()
 export class SimulatorHistoryService {

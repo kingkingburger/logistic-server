@@ -9,9 +9,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { SimulatorResult } from '../../simulator-result/entities/simulator-result.entity';
-import { Uld } from '../../uld/entities/uld.entity';
-import { Awb } from '../../awb/entities/awb.entity';
 import { ApiProperty } from '@nestjs/swagger';
+import { Uld } from '../../../facility/uld/uld/entities/uld.entity';
+import { Awb } from '../../../cargo/awb/entities/awb.entity';
 
 @Entity()
 export class SimulatorHistory {
