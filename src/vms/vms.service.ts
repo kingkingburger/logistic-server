@@ -1,14 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Vms3D } from './entities/vms.entity';
-import {
-  Between,
-  FindOperator,
-  ILike,
-  LessThanOrEqual,
-  MoreThanOrEqual,
-  Repository,
-} from 'typeorm';
+import { ILike, Repository } from 'typeorm';
 import { CreateVmsDto } from './dto/create-vms.dto';
 import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
 import { orderByUtil } from '../lib/util/orderBy.util';
@@ -26,15 +19,6 @@ export class VmsService {
 
   async findAll(query: Vms3D & BasicQueryParamDto) {
     // createdAt 기간검색 처리
-    const { createdAtFrom, createdAtTo } = query;
-    let findDate: FindOperator<Date>;
-    if (createdAtFrom && createdAtTo) {
-      findDate = Between(createdAtFrom, createdAtTo);
-    } else if (createdAtFrom) {
-      findDate = MoreThanOrEqual(createdAtFrom);
-    } else if (createdAtTo) {
-      findDate = LessThanOrEqual(createdAtTo);
-    }
 
     return await this.vmsRepository.find({
       where: {
@@ -48,10 +32,5 @@ export class VmsService {
     });
   }
 
-  async findOne(id: number) {
-    // const result = await this.vmsRepository.findOne({
-    // where: { id: id },
-    // });
-    // return result;
-  }
+  async findOne(id: number) {}
 }
