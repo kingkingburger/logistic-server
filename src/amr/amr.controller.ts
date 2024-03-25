@@ -11,7 +11,7 @@ import {
 import { AmrService } from './amr.service';
 import { CreateAmrDto } from './dto/create-amr.dto';
 import { UpdateAmrDto } from './dto/update-amr.dto';
-import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
 @Controller('amr')
 @ApiTags('[Amr]amr')
@@ -77,20 +77,12 @@ export class AmrController {
     return this.amrService.findAll(
       name,
       charging,
-      prcsCD,
-      ACSMode,
       mode,
-      errorLevel,
       errorCode,
-      startTimeFrom,
-      startTimeTo,
-      endTimeFrom,
-      endTimeTo,
       travelDist,
       oprTime,
       stopTime,
       startBatteryLevel,
-      lastBatteryLevel,
       simulation,
       logDT,
       distinguish,
