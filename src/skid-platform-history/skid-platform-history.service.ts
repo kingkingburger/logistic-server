@@ -1,6 +1,5 @@
 import {
   Between,
-  DataSource,
   Equal,
   FindOperator,
   LessThanOrEqual,
@@ -15,7 +14,6 @@ import { CreateSkidPlatformAndAsrsPlcDto } from './dto/plc-data-intersection.dto
 import { BasicQueryParamDto } from '../lib/dto/basicQueryParam.dto';
 import { CreateSkidPlatformHistoryDto } from './dto/create-skid-platform-history.dto';
 import { UpdateSkidPlatformHistoryDto } from './dto/update-skid-platform-history.dto';
-import { CreateAsrsPlcDto } from '../asrs/dto/create-asrs-plc.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SkidPlatformHistory } from './entities/skid-platform-history.entity';
 import { Awb, AwbAttribute } from '../awb/entities/awb.entity';
@@ -24,10 +22,7 @@ import {
   SkidPlatform,
   SkidPlatformAttribute,
 } from '../skid-platform/entities/skid-platform.entity';
-import {
-  AsrsOutOrder,
-  AsrsOutOrderAttribute,
-} from '../asrs-out-order/entities/asrs-out-order.entity';
+import { AsrsOutOrderAttribute } from '../asrs-out-order/entities/asrs-out-order.entity';
 import { RedisService } from '../redis/redis.service';
 import { orderByUtil } from '../lib/util/orderBy.util';
 import process from 'process';
