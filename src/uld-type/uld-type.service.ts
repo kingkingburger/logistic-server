@@ -58,10 +58,9 @@ export class UldTypeService {
   }
 
   async findOne(id: number) {
-    const result = await this.uldTypeRepository.findOne({
+    return await this.uldTypeRepository.findOne({
       where: { id: id },
     });
-    return result;
   }
 
   update(id: number, updateUldTypeDto: UpdateUldTypeDto) {
