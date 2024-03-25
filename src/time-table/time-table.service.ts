@@ -26,10 +26,7 @@ export class TimeTableService {
     private readonly timeTableRepository: Repository<TimeTable>,
   ) {}
   async create(createTimeTableDto: CreateTimeTableDto) {
-    const insertResult = await this.timeTableRepository.save(
-      createTimeTableDto,
-    );
-    return insertResult;
+    return await this.timeTableRepository.save(createTimeTableDto);
   }
 
   async findAll(query: TimeTable & BasicQueryParamDto) {
@@ -101,7 +98,7 @@ export class TimeTableService {
   }
 
   async findOne(id: number) {
-    const result = await this.timeTableRepository.findOne({
+    return await this.timeTableRepository.findOne({
       where: { id: id },
       relations: {
         Uld: true,
@@ -114,7 +111,6 @@ export class TimeTableService {
         Awb: AwbAttribute,
       },
     });
-    return result;
   }
 
   update(id: number, updateTimeTableDto: UpdateTimeTableDto) {
