@@ -33,15 +33,6 @@ export class FileService {
     }
   }
 
-  async readFolder(filePath: string) {
-    try {
-      const dir = await fs.readdir(filePath);
-      return dir;
-    } catch (error) {
-      await this.handleError(error);
-    }
-  }
-
   async uploadFileToLocalServer(
     fileContent: Buffer | string,
     fileName: string,

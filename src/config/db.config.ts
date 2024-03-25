@@ -26,7 +26,6 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { Vms3D } from '../vms/entities/vms.entity';
 import { Hacs } from '../hacs/entities/hacs.entity';
 import { Alarm } from '../alarm/entities/alarm.entity';
-import { AwbReturn } from '../awb-return/entities/awb-return.entity';
 import { Vms2d } from '../vms2d/entities/vms2d.entity';
 import { VmsAwbResult } from '../vms-awb-result/entities/vms-awb-result.entity';
 import process from 'process';
