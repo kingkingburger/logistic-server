@@ -1,9 +1,4 @@
-import {
-  HttpException,
-  Inject,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUldDto } from './dto/create-uld.dto';
 import { UpdateUldDto } from './dto/update-uld.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -114,7 +109,7 @@ export class UldService {
   }
 
   async findOne(id: number) {
-    const result = await this.uldRepository.findOne({
+    return await this.uldRepository.findOne({
       where: { id: id },
       relations: {
         UldType: true,
@@ -131,7 +126,6 @@ export class UldService {
         Scc: SccAttribute,
       },
     });
-    return result;
   }
 
   async complete(query: ManageUldCountDto) {
@@ -171,6 +165,6 @@ export class UldService {
         Scc: item,
       };
     });
-    const insertResult = await this.uldSccJoinRepository.save(joinBody);
+    await this.uldSccJoinRepository.save(joinBody);
   }
 }
