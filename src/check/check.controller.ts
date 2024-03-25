@@ -86,7 +86,6 @@ export class CheckController {
       `SELECT top 1 * from VWMS_AWB_RESULT var`,
     );
     return exist;
-    // return exist ? 'dimoaDB Connected' : 'no Found Mssql';
   }
 
   @ApiOperation({

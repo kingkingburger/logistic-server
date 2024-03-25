@@ -23,7 +23,7 @@ export class BasicController {
   }
 
   @Post('test/raw/insert/query')
-  sendInsertQueryAtMssql(@Body() createBasicDto: CreateBasicDto) {
+  sendInsertQueryAtMssql() {
     return this.basicService.sendInsertQueryAtMssql();
   }
 
