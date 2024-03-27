@@ -15,6 +15,7 @@ import { SimulatorResultAttribute } from '../simulator-result/entities/simulator
 import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 import { AwbAttribute } from '../../cargo/awb/entities/awb.entity';
 import { UldAttribute } from '../../facility/uld/uld/entities/uld.entity';
+import { orderByUtil } from '../../../lib/util/orderBy.util';
 
 @Injectable()
 export class SimulatorHistoryService {
@@ -61,6 +62,9 @@ export class SimulatorHistoryService {
         Awb: query.Awb ? Equal(+query.Awb) : undefined,
         createdAt: findDate,
       },
+      order: orderByUtil(query.order),
+      take: query.limit,
+      skip: query.offset,
     });
   }
 
