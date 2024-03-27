@@ -42,8 +42,6 @@ import { BasicQueryParamDto } from '../../../lib/dto/basicQueryParam.dto';
 @Controller('awb')
 @ApiTags('[화물,vms]Awb')
 export class AwbController {
-  private invmsProcessing = false;
-
   constructor(
     private readonly awbService: AwbService,
     private readonly configService: ConfigService,
@@ -268,11 +266,6 @@ export class AwbController {
     return this.awbService.remove(+id);
   }
 
-  // 3초 딜레이를 위한 Promise 기반의 delay 함수
-  private delay(ms: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
-
   // VMS 설비데이터 데이터를 추적하는 mqtt
   @MessagePattern('hyundai/vms1/eqData') //구독하는 주제
   async createByPlcMatt(@Payload() data) {
@@ -280,52 +273,38 @@ export class AwbController {
       return;
     }
 
-    // 1초 딜레이로 부하 줄이기
-    if (!this.invmsProcessing) {
-      this.invmsProcessing = true; // 처리 시작 표시
+    // 화물 생성 로직
+    await this.awbService.createAwbByPlcMqtt(data);
 
-      if (process.env.VMSLATENCY === 'true') {
-        winstonLogger.debug(
-          `vms mqtt 수신 ${new Date().toISOString()}/${new Date().getTime()}`,
-        );
-      }
-      // 메시지 처리 로직
-      await this.awbService.createAwbByPlcMqtt(data);
+    /**
+     * vms에서 오는 알람 처리를 위한 로직
+     * awbService에 로직 생성하려고 하면 주입 모듈 꼬여서 안넣어둠
+     */
+    const VMS_08_01_P2A_Total_Error = data['VMS_08_01_P2A_Total_Error'];
 
-      /**
-       * vms에서 오는 알람 처리를 위한 로직
-       * awbService에 로직 생성하려고 하면 주입 모듈 꼬여서 안넣어둠
-       */
-      const VMS_08_01_P2A_Total_Error = data['VMS_08_01_P2A_Total_Error'];
+    if (VMS_08_01_P2A_Total_Error === 0) {
+      return;
+    }
 
-      if (VMS_08_01_P2A_Total_Error === 0) {
-        return;
-      }
+    const previousVMS_08_01_P2A_Total_Error =
+      await this.alarmService.getPreviousAlarmState(
+        'VMS_08_01_P2A_Total_Error',
+        'VMS 계측기 에러',
+      );
 
-      const previousVMS_08_01_P2A_Total_Error =
-        await this.alarmService.getPreviousAlarmState(
-          'VMS_08_01_P2A_Total_Error',
-          'VMS 계측기 에러',
-        );
-
-      if (previousVMS_08_01_P2A_Total_Error && VMS_08_01_P2A_Total_Error) {
-        await this.alarmService.changeAlarm(
-          previousVMS_08_01_P2A_Total_Error,
-          true,
-        );
-      } else if (
-        !previousVMS_08_01_P2A_Total_Error &&
-        VMS_08_01_P2A_Total_Error
-      ) {
-        await this.alarmService.makeAlarm(
-          'VMS_08_01_P2A_Total_Error',
-          'VMS 계측기 에러',
-        );
-      }
-      // 3초 딜레이
-      await this.delay(1000);
-
-      this.invmsProcessing = false; // 처리 완료 표시
+    if (previousVMS_08_01_P2A_Total_Error && VMS_08_01_P2A_Total_Error) {
+      await this.alarmService.changeAlarm(
+        previousVMS_08_01_P2A_Total_Error,
+        true,
+      );
+    } else if (
+      !previousVMS_08_01_P2A_Total_Error &&
+      VMS_08_01_P2A_Total_Error
+    ) {
+      await this.alarmService.makeAlarm(
+        'VMS_08_01_P2A_Total_Error',
+        'VMS 계측기 에러',
+      );
     }
   }
 
