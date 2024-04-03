@@ -1,6 +1,7 @@
 import { Controller, Get, Inject } from '@nestjs/common';
-import { RedisClientType } from 'redis';
+
 import { ClientProxy } from '@nestjs/microservices';
+import { RedisClientType } from 'redis';
 
 @Controller()
 export class AppController {
